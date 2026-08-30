@@ -33,3 +33,4 @@ yarn-error.log*
 
 # Workshop material — local only until workshop day
 docs/workshop.html
+docs/workshop/
