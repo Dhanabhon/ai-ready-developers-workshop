@@ -363,9 +363,9 @@ node -v && npm -v</code></pre><button class="copy" type="button">คัดลอ
     <div class="tbl"><table>
       <thead><tr><th>แพลตฟอร์ม</th><th>สมัครที่</th><th>ค่าใช้จ่าย</th><th>ใช้ทำอะไร</th></tr></thead>
       <tbody>
-        <tr><td>Gemini</td><td><a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a></td><td>ฟรี (บัญชี Google)</td><td>Gemini CLI + แชต — agent หลักสาย Free ของ workshop</td></tr>
+        <tr><td>Google Antigravity</td><td><a href="https://antigravity.google" target="_blank" rel="noopener">antigravity.google</a></td><td>ฟรี (บัญชี Google)</td><td>Antigravity CLI + IDE — agent หลักสาย Free ของ workshop (มาแทน Gemini CLI เดิม)</td></tr>
         <tr><td>Cursor</td><td><a href="https://cursor.com" target="_blank" rel="noopener">cursor.com</a></td><td>Free plan</td><td>AI IDE</td></tr>
-        <tr><td>OpenCode</td><td><a href="https://opencode.ai" target="_blank" rel="noopener">opencode.ai</a></td><td>ฟรี (BYOK — จับคู่กับ Gemini หรือ GLM trial ได้)</td><td>Coding agent ในเทอร์มินัล</td></tr>
+        <tr><td>OpenCode</td><td><a href="https://opencode.ai" target="_blank" rel="noopener">opencode.ai</a></td><td>ฟรี (BYOK — จับคู่กับ Google หรือ GLM trial ได้)</td><td>Coding agent ในเทอร์มินัล</td></tr>
         <tr><td>OpenDesign <span class="badge opt">ทางเลือก</span></td><td><a href="https://open-design.ai" target="_blank" rel="noopener">open-design.ai</a></td><td>ฟรี open-source</td><td>งานออกแบบ UI — เฉพาะคนสนใจสายดีไซน์</td></tr>
       </tbody>
     </table></div>
@@ -398,15 +398,16 @@ node -v && npm -v</code></pre><button class="copy" type="button">คัดลอ
 
   <section class="step" id="sec-cli">
     <div class="step-head"><span class="step-no">06</span><h2>ติดตั้ง AI Coding CLI และแอป</h2></div>
-    <div class="os-win-only"><p><span class="os-tag">Windows</span> — CLI ทุกตัวในหัวข้อนี้ติดตั้งใน <strong>Ubuntu (WSL)</strong> ส่วนแอป Cursor / ZCode ติดตั้งฝั่ง Windows ปกติ</p></div>
+    <div class="os-win-only"><p><span class="os-tag">Windows</span> — CLI ทุกตัวในหัวข้อนี้ติดตั้งใน <strong>Ubuntu (WSL)</strong> ส่วนแอป (Cursor / Antigravity IDE / ZCode) ติดตั้งฝั่ง Windows ปกติ</p></div>
 
-    <h3>6.1 Gemini CLI <span class="badge req">จำเป็น · ฟรี</span></h3>
-    <div class="cmd"><pre><code>npm install -g @google/gemini-cli</code></pre><button class="copy" type="button">คัดลอก</button></div>
-    <p>รัน <code>gemini</code> แล้วล็อกอินด้วยบัญชี Google — ใช้ฟรี โควตาเหลือเฟือสำหรับ workshop — เอกสาร: <a href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener">github.com/google-gemini/gemini-cli</a></p>
+    <h3>6.1 Antigravity CLI <span class="badge req">จำเป็น · ฟรี</span></h3>
+    <div class="cmd"><pre><code>curl -fsSL https://antigravity.google/cli/install.sh | bash</code></pre><button class="copy" type="button">คัดลอก</button></div>
+    <p>ได้คำสั่งชื่อ <code>agy</code> — รันแล้วล็อกอินด้วยบัญชี Google ใช้ฟรี — เอกสาร: <a href="https://antigravity.google/docs/cli/getting-started/" target="_blank" rel="noopener">antigravity.google/docs/cli</a></p>
+    <div class="note">Antigravity CLI คือตัวแทนของ <strong>Gemini CLI เดิม</strong> — Google เปลี่ยนชื่อ/แพลตฟอร์มเมื่อ พ.ค. 2026 และ Gemini CLI หยุดให้บริการผู้ใช้ทั่วไปแล้วตั้งแต่ มิ.ย. 2026 ถ้าเจอบทเรียนเก่าที่อ้างถึง Gemini CLI ให้ใช้ Antigravity CLI แทนได้เลย</div>
 
     <h3>6.2 OpenCode <span class="badge req">จำเป็น · ฟรี</span></h3>
     <div class="cmd"><pre><code>curl -fsSL https://opencode.ai/install | bash</code></pre><button class="copy" type="button">คัดลอก</button></div>
-    <p>(หรือ <code>npm install -g opencode-ai</code>) แล้วรัน <code>opencode auth login</code> เชื่อม provider ที่มี — สาย Free จับคู่กับ Gemini หรือ GLM trial ได้เลย</p>
+    <p>(หรือ <code>npm install -g opencode-ai</code>) แล้วรัน <code>opencode auth login</code> เชื่อม provider ที่มี — สาย Free จับคู่กับ Google หรือ GLM trial ได้เลย</p>
 
     <h3>6.3 rtk CLI — Token Optimization <span class="badge req">จำเป็น</span></h3>
     <p><a href="https://www.rtk-ai.app/" target="_blank" rel="noopener">rtk</a> เป็น CLI proxy ที่ช่วยลดการใช้ token ของ AI agent ลง 60–90% เวลาเรียกคำสั่ง dev ทั่วไป (git, test, build ฯลฯ):</p>
@@ -425,9 +426,10 @@ rtk gain</code></pre><button class="copy" type="button">คัดลอก</butt
 
     <h3>6.6 แอปเดสก์ท็อป</h3>
     <ul>
+      <li><strong>Antigravity IDE</strong> (ฟรี) — ดาวน์โหลดจาก <a href="https://antigravity.google/download" target="_blank" rel="noopener">antigravity.google/download</a> ล็อกอินด้วยบัญชี Google เดียวกับ CLI</li>
       <li><strong>Cursor</strong> (ฟรี) — ดาวน์โหลดจาก <a href="https://cursor.com" target="_blank" rel="noopener">cursor.com</a> แล้วล็อกอินด้วยบัญชีที่สมัครไว้</li>
       <li><strong>ZCode</strong> <span class="badge opt">ทางเลือก</span> — ดาวน์โหลดจาก <a href="https://zcode.z.ai" target="_blank" rel="noopener">zcode.z.ai</a> แล้วเชื่อมกับ GLM Coding Plan (ดูวิธีที่ <a href="https://zcode.z.ai/en/docs/configuration" target="_blank" rel="noopener">Connect Models &amp; Plans</a>)</li>
-      <li><strong>OpenDesign</strong> <span class="badge opt">ทางเลือก</span> — ติดตั้งจาก <a href="https://open-design.ai" target="_blank" rel="noopener">open-design.ai</a> ตอนเปิดครั้งแรกเลือก <em>local coding agent</em> แล้วชี้ไปที่ CLI ที่ติดตั้งไว้ (เช่น Gemini CLI หรือ OpenCode)</li>
+      <li><strong>OpenDesign</strong> <span class="badge opt">ทางเลือก</span> — ติดตั้งจาก <a href="https://open-design.ai" target="_blank" rel="noopener">open-design.ai</a> ตอนเปิดครั้งแรกเลือก <em>local coding agent</em> แล้วชี้ไปที่ CLI ที่ติดตั้งไว้ (เช่น OpenCode)</li>
     </ul>
   </section>
 
@@ -489,7 +491,7 @@ vercel whoami</code></pre><button class="copy" type="button">คัดลอก<
         <tr><td>Claude Code</td><td>รัน <code>claude mcp add --transport http vercel https://mcp.vercel.com</code></td></tr>
         <tr><td>Cursor</td><td>Settings → MCP → Add server แล้วใส่ URL (หรือกดปุ่ม <em>Add to Cursor</em> ในหน้าเอกสาร Vercel)</td></tr>
         <tr><td>ChatGPT</td><td>Settings → Connectors → เพิ่ม MCP connector ด้วย URL เดียวกัน</td></tr>
-        <tr><td>Gemini CLI</td><td>เพิ่มใน <code>~/.gemini/settings.json</code>: <code>{"mcpServers":{"vercel":{"httpUrl":"https://mcp.vercel.com"}}}</code></td></tr>
+        <tr><td>Antigravity CLI</td><td>เพิ่ม MCP server ด้วย URL เดียวกัน — ดูวิธีของเวอร์ชันที่ใช้ใน <a href="https://antigravity.google/docs/cli/getting-started/" target="_blank" rel="noopener">antigravity.google/docs/cli</a></td></tr>
         <tr><td>OpenCode</td><td>เพิ่มใน <code>opencode.json</code>: <code>{"mcp":{"vercel":{"type":"remote","url":"https://mcp.vercel.com"}}}</code></td></tr>
       </tbody>
     </table></div>
@@ -509,7 +511,7 @@ vercel whoami</code></pre><button class="copy" type="button">คัดลอก<
       <label class="check"><input type="checkbox" data-k="acc-ai"><span>มีบัญชีกลุ่มฟรีครบ: Gemini, Cursor และ OpenCode</span></label>
       <label class="check"><input type="checkbox" data-k="acc-dev"><span>มีบัญชี GitHub (เปิด 2FA), Vercel และ Supabase แล้ว</span></label>
       <label class="check"><input type="checkbox" data-k="gh"><span><code>gh auth status</code> ผ่าน</span></label>
-      <label class="check"><input type="checkbox" data-k="claude"><span>Gemini CLI ล็อกอินและใช้งานได้</span></label>
+      <label class="check"><input type="checkbox" data-k="claude"><span>Antigravity CLI (agy) ล็อกอินและใช้งานได้</span></label>
       <label class="check"><input type="checkbox" data-k="codex"><span>OpenCode ล็อกอินและใช้งานได้</span></label>
       <label class="check"><input type="checkbox" data-k="gemini"><span>(ทางเลือก) Claude Code / Codex ใช้งานได้ ถ้าสมัครแผนเสียเงิน</span></label>
       <label class="check"><input type="checkbox" data-k="rtk"><span><code>rtk gain</code> รันได้ไม่ error</span></label>

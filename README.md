@@ -1,6 +1,6 @@
 # AI-Ready Developers Workshop
 
-เอกสารและทรัพยากรประกอบ workshop สำหรับนักพัฒนาที่ต้องการทำงานร่วมกับ AI Coding Agent (Claude Code, Codex, Gemini CLI, Cursor, ZCode และอื่น ๆ)
+เอกสารและทรัพยากรประกอบ workshop สำหรับนักพัฒนาที่ต้องการทำงานร่วมกับ AI Coding Agent (Google Antigravity, OpenCode, Cursor, Claude Code, Codex, ZCode และอื่น ๆ)
 
 ## เตรียมความพร้อมก่อนเริ่ม (Prerequisites)
 
@@ -18,7 +18,7 @@
 
 - สเปกเครื่องที่แนะนำ และการเตรียมระบบปฏิบัติการ (WSL2 บน Windows / Homebrew บน macOS)
 - พื้นฐานคำสั่ง Linux สำหรับผู้เริ่มต้นใช้ WSL
-- การสมัครบัญชีแพลตฟอร์ม AI (Claude, ChatGPT, Gemini, Cursor, Z.ai/ZCode, OpenCode, OpenDesign)
+- การสมัครบัญชีแพลตฟอร์ม AI เน้น Free tier ก่อน (Google Antigravity, Cursor, OpenCode) ส่วนแผนเสียเงินเป็นทางเลือก (Z.ai/ZCode, Claude, ChatGPT)
 - การสมัครบัญชีแพลตฟอร์มนักพัฒนา (GitHub, Vercel, Supabase)
 - การติดตั้ง AI Coding CLI, rtk, Skills (Superpowers) และการ symlink skills ข้ามแพลตฟอร์ม
 - การเชื่อมต่อ Vercel (CLI, plugin, MCP) และเช็กลิสต์ตรวจความพร้อมก่อนวันงาน
