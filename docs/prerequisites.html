@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>เตรียมเครื่อง AI-Ready Developers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --paper:#F6F7F4; --surface:#FFFFFF; --ink:#1E2620; --muted:#5A675E;
+    --accent:#17694A; --accent-ink:#0F4A34; --accent-soft:#E3EFE7;
+    --amber:#8A5E14; --amber-soft:#F4EBD8;
+    --line:#D9E0DA; --code-bg:#1C241F; --code-ink:#D9E4DC; --code-line:#33413A;
+    --focus:#17694A;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#121714; --surface:#1A211C; --ink:#E6ECE7; --muted:#9DAAA0;
+      --accent:#5BC492; --accent-ink:#8AD8B2; --accent-soft:#1D2E25;
+      --amber:#D9A94E; --amber-soft:#2E271A;
+      --line:#2A342D; --code-bg:#0D120F; --code-ink:#C9D6CD; --code-line:#26302A;
+      --focus:#5BC492;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#121714; --surface:#1A211C; --ink:#E6ECE7; --muted:#9DAAA0;
+    --accent:#5BC492; --accent-ink:#8AD8B2; --accent-soft:#1D2E25;
+    --amber:#D9A94E; --amber-soft:#2E271A;
+    --line:#2A342D; --code-bg:#0D120F; --code-ink:#C9D6CD; --code-line:#26302A;
+    --focus:#5BC492;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important} }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"IBM Plex Sans Thai",-apple-system,"Segoe UI",sans-serif;
+    font-size:1.0625rem; line-height:1.75;
+  }
+  a{color:var(--accent); text-decoration-thickness:1px; text-underline-offset:3px}
+  a:hover{color:var(--accent-ink)}
+  :is(a,button,input):focus-visible{outline:2px solid var(--focus); outline-offset:2px; border-radius:4px}
+  h1,h2,h3{font-family:"Bai Jamjuree","IBM Plex Sans Thai",sans-serif; line-height:1.3; text-wrap:balance; margin:0}
+  .wrap{max-width:820px; margin:0 auto; padding:0 1.25rem}
+
+  header.top{
+    position:sticky; top:0; z-index:20; background:var(--paper);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.65rem 0}
+  .brand{font-family:"Bai Jamjuree",sans-serif; font-weight:700; font-size:.95rem; letter-spacing:.02em}
+  .brand span{color:var(--accent)}
+  .os-switch{display:flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; background:var(--surface)}
+  .os-switch button{
+    font-family:"IBM Plex Sans Thai",sans-serif; font-size:.85rem; font-weight:600;
+    border:0; background:transparent; color:var(--muted); padding:.35rem .95rem; cursor:pointer;
+  }
+  .os-switch button[aria-pressed="true"]{background:var(--accent); color:var(--paper)}
+
+  .hero{padding:3.25rem 0 2.25rem; border-bottom:1px solid var(--line)}
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace; font-size:.75rem; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--accent); margin:0 0 .9rem;
+  }
+  .hero h1{font-size:clamp(1.9rem, 1.3rem + 2.6vw, 3rem); font-weight:700}
+  .hero p.lead{max-width:60ch; color:var(--muted); margin:1.1rem 0 0}
+  .meta{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1.4rem}
+  .chip{
+    display:inline-block; font-size:.8rem; font-weight:600; padding:.2rem .7rem;
+    border:1px solid var(--line); border-radius:999px; background:var(--surface); color:var(--muted);
+  }
+  .chip.acc{border-color:var(--accent); color:var(--accent)}
+
+  nav.toc{padding:1.8rem 0; border-bottom:1px solid var(--line)}
+  nav.toc h2{font-size:.85rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:600}
+  nav.toc ol{margin:.9rem 0 0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:.3rem .8rem; counter-reset:toc -1}
+  nav.toc li{counter-increment:toc}
+  nav.toc a{
+    display:flex; gap:.6rem; align-items:baseline; text-decoration:none; color:var(--ink);
+    font-weight:500; font-size:.95rem; padding:.32rem .5rem; border-radius:8px;
+  }
+  nav.toc a::before{content:counter(toc,decimal-leading-zero); font-family:"IBM Plex Mono",monospace; font-size:.78rem; color:var(--accent)}
+  nav.toc a:hover{background:var(--accent-soft)}
+
+  section.step{padding:2.75rem 0 1rem; border-bottom:1px solid var(--line)}
+  .step-head{display:flex; align-items:baseline; gap:1rem; margin-bottom:.4rem}
+  .step-no{font-family:"IBM Plex Mono",monospace; font-size:1.05rem; color:var(--accent); font-weight:500}
+  section.step h2{font-size:1.55rem; font-weight:600}
+  section.step h3{font-size:1.08rem; font-weight:600; margin:1.9rem 0 .35rem}
+  section.step p{margin:.55rem 0; max-width:68ch}
+  section.step ul, section.step ol{padding-left:1.4rem; margin:.55rem 0}
+  section.step li{margin:.3rem 0}
+  .note{
+    background:var(--accent-soft); border-left:3px solid var(--accent);
+    padding:.75rem 1rem; border-radius:0 8px 8px 0; margin:1.1rem 0; font-size:.95rem;
+  }
+  .note.warn{background:var(--amber-soft); border-left-color:var(--amber)}
+  .badge{font-size:.72rem; font-weight:600; letter-spacing:.05em; padding:.12rem .55rem; border-radius:999px; vertical-align:middle}
+  .badge.req{background:var(--accent-soft); color:var(--accent-ink)}
+  .badge.opt{background:var(--amber-soft); color:var(--amber)}
+  .os-tag{font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.08em; color:var(--muted); text-transform:uppercase}
+
+  .cmd{position:relative; margin:.8rem 0 1.1rem}
+  .cmd pre{
+    margin:0; background:var(--code-bg); color:var(--code-ink); border:1px solid var(--code-line);
+    border-radius:10px; padding:.85rem 5.5rem .85rem 1rem; overflow-x:auto;
+    font-family:"IBM Plex Mono",monospace; font-size:.86rem; line-height:1.6;
+  }
+  .cmd button.copy{
+    position:absolute; top:.5rem; right:.5rem; font-family:"IBM Plex Sans Thai",sans-serif;
+    font-size:.75rem; font-weight:600; color:var(--code-ink); background:transparent;
+    border:1px solid var(--code-line); border-radius:6px; padding:.22rem .6rem; cursor:pointer;
+  }
+  .cmd button.copy:hover{border-color:var(--code-ink)}
+
+  table{border-collapse:collapse; width:100%; font-size:.93rem; line-height:1.55}
+  .tbl{overflow-x:auto; margin:1rem 0; border:1px solid var(--line); border-radius:10px}
+  th,td{text-align:left; padding:.6rem .8rem; border-bottom:1px solid var(--line); vertical-align:top}
+  th{font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); background:var(--surface); white-space:nowrap}
+  tr:last-child td{border-bottom:0}
+  td:first-child{font-weight:600; white-space:nowrap}
+
+  body.os-mac .os-win-only{display:none}
+  .os-mac-only{display:none}
+  body.os-mac .os-mac-only{display:block}
+
+  .checklist{margin:1.2rem 0; display:flex; flex-direction:column; gap:.15rem}
+  .check{
+    display:flex; gap:.75rem; align-items:flex-start; padding:.5rem .65rem;
+    border-radius:8px; cursor:pointer; font-size:.98rem;
+  }
+  .check:hover{background:var(--accent-soft)}
+  .check input{margin-top:.35rem; width:1rem; height:1rem; accent-color:var(--accent); flex:none}
+  .check input:checked ~ span{color:var(--muted); text-decoration:line-through; text-decoration-color:var(--accent)}
+  .progress{font-family:"IBM Plex Mono",monospace; font-size:.85rem; color:var(--accent); margin-top:.4rem}
+
+  footer.end{padding:2.5rem 0 3.5rem; color:var(--muted); font-size:.9rem}
+  footer.end p{max-width:68ch}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap topbar">
+    <div class="brand">AI-READY <span>//</span> PREREQUISITES</div>
+    <div class="os-switch" role="group" aria-label="เลือกระบบปฏิบัติการ">
+      <button type="button" id="btn-win" aria-pressed="true">Windows</button>
+      <button type="button" id="btn-mac" aria-pressed="false">macOS</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <p class="eyebrow">AI-Ready Developers Workshop</p>
+    <h1>เตรียมเครื่องให้พร้อม ก่อนวัน Workshop</h1>
+    <p class="lead">เอกสารนี้พาไปทีละขั้น ตั้งแต่เตรียมระบบปฏิบัติการ สมัครบัญชีที่ต้องใช้ ไปจนถึงติดตั้งเครื่องมือ AI Coding ทั้งหมด ทำตามลำดับ 00 → 10 ให้ครบก่อนวันจริง จะได้ลงมือทำ workshop ได้ทันทีโดยไม่เสียเวลาติดตั้ง</p>
+    <div class="meta">
+      <span class="chip acc">ใช้เวลาเตรียมราว 1–2 ชั่วโมง</span>
+      <span class="chip">รองรับ Windows และ macOS</span>
+      <span class="chip">สลับระบบปฏิบัติการได้ที่มุมขวาบน</span>
+    </div>
+  </div>
+
+  <nav class="toc" aria-label="สารบัญ">
+    <h2>ลำดับการเตรียมตัว</h2>
+    <ol>
+      <li><a href="#sec-spec">สเปกเครื่องที่แนะนำ</a></li>
+      <li><a href="#sec-os">เตรียมระบบปฏิบัติการและเทอร์มินัล</a></li>
+      <li><a href="#sec-linux">พื้นฐานคำสั่ง Linux ใน WSL</a></li>
+      <li><a href="#sec-base">ติดตั้งเครื่องมือพื้นฐาน</a></li>
+      <li><a href="#sec-ai-accounts">สมัครบัญชีแพลตฟอร์ม AI</a></li>
+      <li><a href="#sec-dev-accounts">สมัครบัญชีแพลตฟอร์มนักพัฒนา</a></li>
+      <li><a href="#sec-cli">ติดตั้ง AI Coding CLI และแอป</a></li>
+      <li><a href="#sec-skills">ติดตั้ง Skills</a></li>
+      <li><a href="#sec-symlink">แชร์ Skills ข้ามแพลตฟอร์มด้วย Symlink</a></li>
+      <li><a href="#sec-vercel">เชื่อมต่อ Vercel</a></li>
+      <li><a href="#sec-checklist">เช็กลิสต์ก่อนวันงาน</a></li>
+    </ol>
+  </nav>
+
+  <section class="step" id="sec-spec">
+    <div class="step-head"><span class="step-no">00</span><h2>สเปกเครื่องที่แนะนำ</h2></div>
+    <p>ผู้เข้าร่วมส่วนใหญ่ใช้ laptop ซึ่งใช้ได้เลย — ตรวจสเปกให้ผ่านเกณฑ์นี้ก่อนเริ่มติดตั้ง เพราะเราจะเปิด IDE, เทอร์มินัล, AI agent และเบราว์เซอร์พร้อมกันตลอดวัน</p>
+    <div class="tbl"><table>
+      <thead><tr><th>รายการ</th><th>ขั้นต่ำ</th><th>แนะนำ</th></tr></thead>
+      <tbody>
+        <tr><td>RAM</td><td>8 GB</td><td>16 GB ขึ้นไป</td></tr>
+        <tr><td>พื้นที่ดิสก์ว่าง</td><td>20 GB</td><td>30 GB ขึ้นไป</td></tr>
+        <tr><td>CPU</td><td>4 cores (x64 หรือ Apple Silicon)</td><td>รุ่นตั้งแต่ปี 2020 ขึ้นไป</td></tr>
+        <tr><td>Windows</td><td>Windows 10 เวอร์ชัน 2004 ขึ้นไป (64-bit)</td><td>Windows 11</td></tr>
+        <tr><td>macOS</td><td>macOS 14 (Sonoma)</td><td>macOS 15 ขึ้นไป, ชิป Apple Silicon (M1 ขึ้นไป)</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>ต้องมี<strong>สิทธิ์ administrator</strong> บนเครื่อง — เครื่องบริษัทที่ติด MDM / antivirus / proxy อาจติดตั้ง WSL หรือ CLI ไม่ได้ ให้ประสานฝ่าย IT ล่วงหน้า หรือนำเครื่องส่วนตัวมาแทน</li>
+      <li><span class="os-tag">Windows</span> — CPU ต้องเปิด virtualization (Intel VT-x / AMD-V) ใน BIOS/UEFI สำหรับ WSL2 (เครื่องส่วนใหญ่เปิดมาให้แล้ว)</li>
+      <li>ควรติดตั้งทุกอย่างให้เสร็จ<strong>จากที่บ้าน</strong> — ยอดดาวน์โหลดรวมหลาย GB ไม่ควรพึ่ง Wi-Fi หน้างาน</li>
+      <li>อย่าลืม<strong>สายชาร์จ</strong> — งานเต็มวัน แบตอย่างเดียวไม่รอด</li>
+      <li>แท็บเล็ต / มือถือ / Chromebook ใช้ทำ workshop นี้ไม่ได้</li>
+    </ul>
+  </section>
+
+  <section class="step" id="sec-os">
+    <div class="step-head"><span class="step-no">01</span><h2>เตรียมระบบปฏิบัติการและเทอร์มินัล</h2></div>
+
+    <div class="os-win-only">
+      <p><span class="os-tag">Windows</span></p>
+      <p>บน Windows เราจะทำงานผ่าน <strong>WSL2 (Windows Subsystem for Linux)</strong> เพราะเครื่องมือ CLI สาย AI เกือบทั้งหมดออกแบบมาสำหรับ Linux/macOS เป็นหลัก ใช้ Windows 10 (เวอร์ชัน 2004 ขึ้นไป) หรือ Windows 11</p>
+      <h3>1.1 ติดตั้ง WSL2 + Ubuntu</h3>
+      <p>เปิด <strong>PowerShell แบบ Run as Administrator</strong> แล้วรัน:</p>
+      <div class="cmd"><pre><code>wsl --install</code></pre><button class="copy" type="button">คัดลอก</button></div>
+      <p>คำสั่งเดียวนี้จะติดตั้ง WSL2 พร้อม Ubuntu ให้อัตโนมัติ จากนั้น<strong>รีสตาร์ตเครื่อง</strong> เปิด Ubuntu ครั้งแรกระบบจะให้ตั้ง username / password ของฝั่ง Linux (จำรหัสนี้ไว้ ใช้กับ <code>sudo</code>)</p>
+      <p>อ่านรายละเอียดและวิธีแก้ปัญหาได้ที่คู่มือทางการของ Microsoft: <a href="https://learn.microsoft.com/en-us/windows/wsl/install" target="_blank" rel="noopener">learn.microsoft.com/en-us/windows/wsl/install</a></p>
+      <h3>1.2 ตรวจสอบว่าเป็น WSL2</h3>
+      <div class="cmd"><pre><code>wsl -l -v</code></pre><button class="copy" type="button">คัดลอก</button></div>
+      <p>คอลัมน์ VERSION ต้องเป็น <code>2</code> (ถ้าติดตั้งไม่ผ่าน มักเกิดจากยังไม่เปิด Virtualization ใน BIOS/UEFI)</p>
+      <h3>1.3 Windows Terminal</h3>
+      <p>Windows 11 มีติดมาให้แล้ว ส่วน Windows 10 ติดตั้งได้จาก Microsoft Store — แนะนำตั้งโปรไฟล์ Ubuntu เป็นค่าเริ่มต้น</p>
+      <div class="note warn"><strong>กติกาสำคัญ:</strong> ตั้งแต่จุดนี้เป็นต้นไป คำสั่งเทอร์มินัลทั้งหมดในเอกสารนี้ให้รันใน <strong>Ubuntu (WSL)</strong> ไม่ใช่ PowerShell — ยกเว้นหัวข้อที่ระบุว่าเป็นแอปฝั่ง Windows</div>
+      <h3>1.4 อัปเดตแพ็กเกจ และติดตั้ง Homebrew</h3>
+      <div class="cmd"><pre><code>sudo apt update && sudo apt upgrade -y
+sudo apt install -y build-essential curl git</code></pre><button class="copy" type="button">คัดลอก</button></div>
+      <p>ติดตั้ง <a href="https://brew.sh" target="_blank" rel="noopener">Homebrew</a> (ใช้บน Linux/WSL ได้ จะใช้ติดตั้ง rtk และเครื่องมืออื่น):</p>
+      <div class="cmd"><pre><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></pre><button class="copy" type="button">คัดลอก</button></div>
+      <p>ติดตั้งเสร็จ อย่าลืมรันคำสั่งในส่วน <em>Next steps</em> ที่ตัวติดตั้งแสดง เพื่อเพิ่ม brew เข้า PATH แล้วตรวจสอบด้วย <code>brew --version</code></p>
+    </div>
+
+    <div class="os-mac-only">
+      <p><span class="os-tag">macOS</span></p>
+      <h3>1.1 ตรวจชิปของเครื่อง: Apple Silicon หรือ Intel</h3>
+      <p>เมนู Apple → <em>About This Mac</em> — ถ้าเห็น <strong>Chip: Apple M1/M2/M3/M4</strong> คือ Apple Silicon ถ้าเห็น <strong>Processor: Intel</strong> คือเครื่อง Intel ทั้งสองแบบใช้ทำ workshop ได้ แต่มีจุดต่างที่ควรรู้:</p>
+      <ul>
+        <li><strong>Homebrew ติดตั้งคนละตำแหน่ง</strong> — Apple Silicon อยู่ที่ <code>/opt/homebrew</code> ส่วน Intel อยู่ที่ <code>/usr/local</code> ไม่ต้องจำ path เอง แค่รันคำสั่งในส่วน <em>Next steps</em> ที่ตัวติดตั้งแสดงให้ครบ</li>
+        <li><strong>Apple Silicon</strong> — เครื่องมือทั้งหมดใน workshop นี้มีเวอร์ชัน Apple Silicon แล้ว ปกติไม่ต้องทำอะไรเพิ่ม แต่ถ้าบังเอิญเจอโปรแกรมเก่าที่มีแต่เวอร์ชัน Intel ระบบจะชวนติดตั้ง Rosetta 2 ให้เอง (หรือรัน <code>softwareupdate --install-rosetta --agree-to-license</code>)</li>
+        <li><strong>Intel Mac</strong> — เป็นเครื่องรุ่นปี 2020 ลงไป ให้อัปเดต macOS เป็นเวอร์ชันใหม่ที่สุดที่เครื่องรองรับก่อน (Homebrew ซัพพอร์ตเฉพาะ macOS 3 เวอร์ชันล่าสุด) และถ้า RAM 8 GB อาจหน่วงเมื่อเปิด IDE กับ AI agent พร้อมกัน — ปิดแอปที่ไม่ใช้ระหว่าง workshop จะช่วยได้</li>
+      </ul>
+      <h3>1.2 ติดตั้ง Xcode Command Line Tools</h3>
+      <p>เปิดแอป Terminal แล้วรัน (ได้ Git และคอมไพเลอร์พื้นฐานมาด้วย):</p>
+      <div class="cmd"><pre><code>xcode-select --install</code></pre><button class="copy" type="button">คัดลอก</button></div>
+      <h3>1.3 ติดตั้ง Homebrew</h3>
+      <p><a href="https://brew.sh" target="_blank" rel="noopener">Homebrew</a> คือ package manager หลักที่เราจะใช้ติดตั้งเครื่องมือเกือบทั้งหมด:</p>
+      <div class="cmd"><pre><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></pre><button class="copy" type="button">คัดลอก</button></div>
+      <p>ติดตั้งเสร็จ รันคำสั่งในส่วน <em>Next steps</em> ที่ตัวติดตั้งแสดง เพื่อเพิ่ม brew เข้า PATH แล้วตรวจสอบด้วย <code>brew --version</code></p>
+    </div>
+  </section>
+
+  <section class="step" id="sec-linux">
+    <div class="step-head"><span class="step-no">02</span><h2>พื้นฐานคำสั่ง Linux ใน WSL</h2></div>
+    <p>ขั้นตอนถัดจากนี้ทำผ่านเทอร์มินัลเกือบทั้งหมด ถ้าเพิ่งใช้ Linux ครั้งแรก ทำความรู้จักคำสั่งชุดนี้ก่อนสัก 10 นาที (ผู้ใช้ macOS ใช้คำสั่งชุดเดียวกันนี้ในแอป Terminal ได้เลย)</p>
+
+    <h3>2.1 โครงสร้างพื้นฐาน: บ้านของคุณคือ <code>~</code></h3>
+    <p>ใน Linux เส้นทางไฟล์ (path) คั่นด้วย <code>/</code> ไม่ใช่ <code>\</code> แบบ Windows และตัวพิมพ์เล็ก–ใหญ่ถือเป็นคนละชื่อกัน โฟลเดอร์ประจำตัวของคุณ (home) คือ <code>/home/ชื่อผู้ใช้</code> เขียนย่อว่า <code>~</code> — พิมพ์ <code>cd ~</code> เมื่อไรก็กลับบ้านทันที และให้เก็บโปรเจกต์ทั้งหมดของ workshop ไว้ใต้ <code>~</code> เสมอ</p>
+
+    <h3>2.2 คำสั่งที่ใช้บ่อย</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>คำสั่ง</th><th>ใช้ทำอะไร</th><th>ตัวอย่าง</th></tr></thead>
+      <tbody>
+        <tr><td><code>pwd</code></td><td>ดูว่าตอนนี้อยู่โฟลเดอร์ไหน</td><td><code>pwd</code></td></tr>
+        <tr><td><code>ls</code>, <code>ls -la</code></td><td>ดูรายชื่อไฟล์ (<code>-la</code> = รวมไฟล์ซ่อน + รายละเอียด)</td><td><code>ls -la</code></td></tr>
+        <tr><td><code>cd</code></td><td>ย้ายไปโฟลเดอร์อื่น (<code>cd ..</code> = ถอยขึ้นหนึ่งชั้น)</td><td><code>cd ~/projects</code></td></tr>
+        <tr><td><code>mkdir -p</code></td><td>สร้างโฟลเดอร์ (ซ้อนกันหลายชั้นได้)</td><td><code>mkdir -p ~/projects/workshop</code></td></tr>
+        <tr><td><code>cp</code>, <code>cp -r</code></td><td>คัดลอกไฟล์ (<code>-r</code> = ทั้งโฟลเดอร์)</td><td><code>cp -r src backup</code></td></tr>
+        <tr><td><code>mv</code></td><td>ย้ายไฟล์ หรือเปลี่ยนชื่อ</td><td><code>mv old.txt new.txt</code></td></tr>
+        <tr><td><code>rm</code>, <code>rm -rf</code></td><td>ลบไฟล์ (<code>-rf</code> = ทั้งโฟลเดอร์)</td><td><code>rm -rf node_modules</code></td></tr>
+        <tr><td><code>cat</code></td><td>แสดงเนื้อหาไฟล์</td><td><code>cat README.md</code></td></tr>
+        <tr><td><code>nano</code></td><td>แก้ไฟล์ในเทอร์มินัล (Ctrl+O บันทึก, Ctrl+X ออก)</td><td><code>nano ~/.bashrc</code></td></tr>
+        <tr><td><code>which</code></td><td>เช็กว่าคำสั่งติดตั้งอยู่ที่ไหน</td><td><code>which node</code></td></tr>
+        <tr><td><code>sudo</code></td><td>รันคำสั่งด้วยสิทธิ์ผู้ดูแล (ใช้รหัสผ่าน Linux ที่ตั้งไว้)</td><td><code>sudo apt update</code></td></tr>
+        <tr><td><code>clear</code></td><td>ล้างหน้าจอ</td><td><code>clear</code></td></tr>
+      </tbody>
+    </table></div>
+    <div class="note warn"><strong>ระวัง:</strong> <code>rm</code> ลบถาวรทันที ไม่มีถังขยะให้กู้คืน — ก่อนกด Enter กับ <code>rm -rf</code> ให้อ่าน path ซ้ำอีกครั้งเสมอ</div>
+    <p>เทคนิคช่วยชีวิต:</p>
+    <ul>
+      <li>กด <strong>Tab</strong> เพื่อเติมชื่อไฟล์/คำสั่งอัตโนมัติ (กดสองครั้งเพื่อดูตัวเลือกทั้งหมด)</li>
+      <li><strong>ลูกศรขึ้น/ลง</strong> เรียกคำสั่งที่เคยพิมพ์กลับมา (<code>history</code> = ดูทั้งหมด)</li>
+      <li><strong>Ctrl+C</strong> ยกเลิกคำสั่งที่กำลังค้างอยู่</li>
+      <li>วาง (paste) ใน Windows Terminal ใช้คลิกขวา หรือ <strong>Ctrl+Shift+V</strong></li>
+    </ul>
+
+    <div class="os-win-only">
+      <h3>2.3 ไป–กลับระหว่าง WSL กับไดรฟ์ของ Windows</h3>
+      <p>ไดรฟ์ทุกตัวของ Windows ถูก mount ไว้ใต้ <code>/mnt/</code> ตามตัวอักษรไดรฟ์ (ตัวพิมพ์เล็ก): <code>C:</code> → <code>/mnt/c</code>, <code>D:</code> → <code>/mnt/d</code></p>
+      <div class="cmd"><pre><code>cd /mnt/c/Users/&lt;ชื่อผู้ใช้ Windows&gt;/Downloads   # เข้าโฟลเดอร์ Downloads ของ Windows
+cd /mnt/d                                       # เข้าไดรฟ์ D:
+wslpath 'C:\Users\me\Desktop'                   # แปลง path แบบ Windows เป็นแบบ Linux</code></pre><button class="copy" type="button">คัดลอก</button></div>
+      <p>สลับมุมมองกับฝั่ง Windows ได้สองทาง:</p>
+      <ul>
+        <li>จาก WSL เปิดโฟลเดอร์ปัจจุบันด้วยแอป Windows: <code>explorer.exe .</code> (File Explorer) หรือ <code>code .</code> (VS Code)</li>
+        <li>จาก Windows เข้าไฟล์ใน Ubuntu ผ่านหัวข้อ <strong>Linux</strong> ใน File Explorer หรือพิมพ์ <code>\\wsl$</code> ใน address bar</li>
+      </ul>
+      <div class="note warn">งานทั้งหมดของ workshop ให้ทำในโฮมฝั่ง Linux (<code>~</code>) — เข้า <code>/mnt/c</code> เฉพาะตอนต้องหยิบไฟล์จากฝั่ง Windows เพราะทำงานช้ากว่ามากและ symlink มีปัญหา</div>
+    </div>
+    <div class="os-mac-only">
+      <h3>2.3 ไดรฟ์และโฟลเดอร์บน macOS</h3>
+      <p>โฟลเดอร์ผู้ใช้ของคุณคือ <code>/Users/ชื่อผู้ใช้</code> (ก็คือ <code>~</code> เช่นกัน) ส่วนไดรฟ์ภายนอก/USB จะอยู่ที่ <code>/Volumes/ชื่อดิสก์</code> — เปิดโฟลเดอร์ปัจจุบันใน Finder ได้ด้วย <code>open .</code> และเปิดใน VS Code ด้วย <code>code .</code></p>
+    </div>
+
+    <h3>2.4 ลองฝึกจริงหนึ่งรอบ</h3>
+    <div class="cmd"><pre><code>cd ~
+mkdir -p ~/projects/workshop
+cd ~/projects/workshop
+touch hello.txt
+ls -la
+pwd</code></pre><button class="copy" type="button">คัดลอก</button></div>
+    <p>ถ้าบรรทัดสุดท้ายแสดง <code>/home/ชื่อผู้ใช้/projects/workshop</code> (หรือ <code>/Users/...</code> บน macOS) แปลว่าคุณพร้อมใช้เทอร์มินัลแล้ว</p>
+  </section>
+
+  <section class="step" id="sec-base">
+    <div class="step-head"><span class="step-no">03</span><h2>ติดตั้งเครื่องมือพื้นฐาน</h2></div>
+
+    <h3>3.1 Git CLI <span class="badge req">จำเป็น</span></h3>
+    <div class="os-win-only">
+      <p><span class="os-tag">Windows · รันใน WSL</span> — ส่วนใหญ่ Ubuntu ติด Git มาให้แล้ว (เราติดตั้งซ้ำไปในขั้น 1.4 แล้วด้วย) ตรวจสอบด้วย <code>git --version</code></p>
+    </div>
+    <div class="os-mac-only">
+      <p><span class="os-tag">macOS</span> — Git มากับ Xcode Command Line Tools แล้ว ตรวจสอบด้วย <code>git --version</code></p>
+    </div>
+    <p>ตั้งค่าชื่อและอีเมล (ใช้อีเมลเดียวกับบัญชี GitHub):</p>
+    <div class="cmd"><pre><code>git config --global user.name "ชื่อของคุณ"
+git config --global user.email "you@example.com"
+git config --global init.defaultBranch main</code></pre><button class="copy" type="button">คัดลอก</button></div>
+
+    <h3>3.2 Node.js LTS ผ่าน nvm <span class="badge req">จำเป็น</span></h3>
+    <p>CLI สาย AI หลายตัวติดตั้งผ่าน npm จึงต้องมี Node.js ก่อน แนะนำติดตั้งผ่าน <a href="https://github.com/nvm-sh/nvm" target="_blank" rel="noopener">nvm</a> เพื่อสลับเวอร์ชันได้ง่าย:</p>
+    <div class="cmd"><pre><code>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash</code></pre><button class="copy" type="button">คัดลอก</button></div>
+    <p>ปิด–เปิดเทอร์มินัลใหม่ แล้วติดตั้ง Node LTS:</p>
+    <div class="cmd"><pre><code>nvm install --lts
+node -v && npm -v</code></pre><button class="copy" type="button">คัดลอก</button></div>
+
+    <h3>3.3 GitHub CLI (gh) <span class="badge req">จำเป็น</span></h3>
+    <div class="cmd"><pre><code>brew install gh</code></pre><button class="copy" type="button">คัดลอก</button></div>
+    <p>ยังไม่ต้องล็อกอิน — เดี๋ยวทำหลังสมัครบัญชี GitHub ในขั้นตอนที่ 05</p>
+
+    <h3>3.4 VS Code <span class="badge req">จำเป็น</span></h3>
+    <p>ดาวน์โหลดจาก <a href="https://code.visualstudio.com" target="_blank" rel="noopener">code.visualstudio.com</a> (ติดตั้งเป็นแอปปกติฝั่ง Windows/macOS)</p>
+    <div class="os-win-only">
+      <p><span class="os-tag">Windows</span> — ติดตั้ง extension <strong>WSL</strong> (ms-vscode-remote.remote-wsl) ด้วย เพื่อให้เปิดโปรเจกต์ที่อยู่ใน Ubuntu ได้โดยพิมพ์ <code>code .</code> จากในเทอร์มินัล WSL</p>
+    </div>
+
+    <h3>3.5 GitHub Desktop <span class="badge opt">ทางเลือก</span></h3>
+    <p>สำหรับคนที่ถนัดจัดการ Git ผ่านหน้าจอ GUI ดาวน์โหลดจาก <a href="https://desktop.github.com" target="_blank" rel="noopener">desktop.github.com</a> (แอปฝั่ง Windows/macOS)</p>
+  </section>
+
+  <section class="step" id="sec-ai-accounts">
+    <div class="step-head"><span class="step-no">04</span><h2>สมัครบัญชีแพลตฟอร์ม AI</h2></div>
+    <p>Workshop นี้ใช้ AI Coding Agent หลายแบรนด์ แนะนำให้<strong>สมัครด้วยอีเมลเดียวกันทุกแพลตฟอร์ม</strong>และเปิด 2FA ทุกบัญชี</p>
+    <div class="tbl"><table>
+      <thead><tr><th>แพลตฟอร์ม</th><th>สมัครที่</th><th>แผนที่แนะนำ</th><th>ใช้ทำอะไร</th></tr></thead>
+      <tbody>
+        <tr><td>Claude <span class="badge req">จำเป็น</span></td><td><a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a></td><td>Pro ขึ้นไป (จำเป็นสำหรับ Claude Code)</td><td>Claude Code CLI และแชต</td></tr>
+        <tr><td>ChatGPT <span class="badge req">จำเป็น</span></td><td><a href="https://chatgpt.com" target="_blank" rel="noopener">chatgpt.com</a></td><td>Plus ขึ้นไป (จำเป็นสำหรับ Codex)</td><td>Codex CLI และแชต</td></tr>
+        <tr><td>Gemini <span class="badge req">จำเป็น</span></td><td><a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a></td><td>บัญชี Google ฟรีก็ใช้ได้</td><td>Gemini CLI และแชต</td></tr>
+        <tr><td>Cursor <span class="badge req">จำเป็น</span></td><td><a href="https://cursor.com" target="_blank" rel="noopener">cursor.com</a></td><td>Free (Pro ถ้าต้องการใช้จริงจัง)</td><td>AI IDE</td></tr>
+        <tr><td>Z.ai / ZCode <span class="badge req">จำเป็น</span></td><td><a href="https://z.ai/subscribe" target="_blank" rel="noopener">z.ai/subscribe</a></td><td>GLM Coding Plan Lite (มี free trial)</td><td>ZCode IDE และใช้โมเดล GLM กับ CLI อื่น</td></tr>
+        <tr><td>OpenCode <span class="badge opt">ทางเลือก</span></td><td><a href="https://opencode.ai" target="_blank" rel="noopener">opencode.ai</a></td><td>ฟรี (BYOK — ใช้บัญชี provider ที่มีอยู่)</td><td>Open-source coding agent ในเทอร์มินัล</td></tr>
+        <tr><td>OpenDesign <span class="badge opt">ทางเลือก</span></td><td><a href="https://open-design.ai" target="_blank" rel="noopener">open-design.ai</a></td><td>ฟรี open-source (ขับเคลื่อนด้วย CLI agent ในเครื่อง)</td><td>งานออกแบบ UI ด้วย AI</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note">Z.ai / ZCode: สมัครบัญชี Z.ai แล้วเปิดใช้ GLM Coding Plan (มีช่วงทดลองฟรี) — แผนเดียวกันนี้เอาไปใช้กับ Claude Code, OpenCode และเครื่องมืออื่นได้ด้วย ดูเอกสารที่ <a href="https://zcode.z.ai/en/docs" target="_blank" rel="noopener">zcode.z.ai/en/docs</a></div>
+  </section>
+
+  <section class="step" id="sec-dev-accounts">
+    <div class="step-head"><span class="step-no">05</span><h2>สมัครบัญชีแพลตฟอร์มนักพัฒนา</h2></div>
+    <p>สมัคร <strong>GitHub ก่อน</strong> เพราะอีกสองบริการจะล็อกอินต่อด้วยบัญชี GitHub</p>
+    <ol>
+      <li><strong>GitHub</strong> — <a href="https://github.com/signup" target="_blank" rel="noopener">github.com/signup</a> สมัครแล้วเปิด 2FA (Settings → Password and authentication)</li>
+      <li><strong>Vercel</strong> — <a href="https://vercel.com/signup" target="_blank" rel="noopener">vercel.com/signup</a> เลือก <em>Continue with GitHub</em> (แผน Hobby ฟรี)</li>
+      <li><strong>Supabase</strong> — <a href="https://supabase.com" target="_blank" rel="noopener">supabase.com</a> เลือก <em>Sign in with GitHub</em> (แผน Free)</li>
+    </ol>
+    <p>จากนั้นกลับมาที่เทอร์มินัล ล็อกอิน GitHub CLI:</p>
+    <div class="cmd"><pre><code>gh auth login</code></pre><button class="copy" type="button">คัดลอก</button></div>
+    <p>เลือก GitHub.com → HTTPS → Login with a web browser แล้วทำตามขั้นตอน ตรวจสอบผลด้วย <code>gh auth status</code></p>
+  </section>
+
+  <section class="step" id="sec-cli">
+    <div class="step-head"><span class="step-no">06</span><h2>ติดตั้ง AI Coding CLI และแอป</h2></div>
+    <div class="os-win-only"><p><span class="os-tag">Windows</span> — CLI ทุกตัวในหัวข้อนี้ติดตั้งใน <strong>Ubuntu (WSL)</strong> ส่วนแอป Cursor / ZCode ติดตั้งฝั่ง Windows ปกติ</p></div>
+
+    <h3>6.1 Claude Code <span class="badge req">จำเป็น</span></h3>
+    <div class="cmd"><pre><code>curl -fsSL https://claude.ai/install.sh | bash</code></pre><button class="copy" type="button">คัดลอก</button></div>
+    <p>(หรือ <code>npm install -g @anthropic-ai/claude-code</code>) เสร็จแล้วเปิดโปรเจกต์ใดก็ได้ รัน <code>claude</code> แล้วล็อกอินด้วยบัญชี Claude Pro/Max</p>
+
+    <h3>6.2 Codex CLI <span class="badge req">จำเป็น</span></h3>
+    <div class="cmd"><pre><code>npm install -g @openai/codex</code></pre><button class="copy" type="button">คัดลอก</button></div>
+    <p>รัน <code>codex</code> แล้วเลือก <em>Sign in with ChatGPT</em> — เอกสาร: <a href="https://developers.openai.com/codex/cli" target="_blank" rel="noopener">developers.openai.com/codex/cli</a></p>
+
+    <h3>6.3 Gemini CLI <span class="badge req">จำเป็น</span></h3>
+    <div class="cmd"><pre><code>npm install -g @google/gemini-cli</code></pre><button class="copy" type="button">คัดลอก</button></div>
+    <p>รัน <code>gemini</code> แล้วล็อกอินด้วยบัญชี Google — เอกสาร: <a href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener">github.com/google-gemini/gemini-cli</a></p>
+
+    <h3>6.4 OpenCode <span class="badge opt">ทางเลือก</span></h3>
+    <div class="cmd"><pre><code>curl -fsSL https://opencode.ai/install | bash</code></pre><button class="copy" type="button">คัดลอก</button></div>
+    <p>(หรือ <code>npm install -g opencode-ai</code>) แล้วรัน <code>opencode auth login</code> เพื่อเชื่อม provider ที่มีอยู่ เช่น Claude หรือ GLM</p>
+
+    <h3>6.5 rtk CLI — Token Optimization <span class="badge req">จำเป็น</span></h3>
+    <p><a href="https://www.rtk-ai.app/" target="_blank" rel="noopener">rtk</a> เป็น CLI proxy ที่ช่วยลดการใช้ token ของ AI agent ลง 60–90% เวลาเรียกคำสั่ง dev ทั่วไป (git, test, build ฯลฯ):</p>
+    <div class="cmd"><pre><code>brew install rtk
+rtk --version
+rtk gain</code></pre><button class="copy" type="button">คัดลอก</button></div>
+    <p><code>rtk gain</code> ใช้ดูสถิติ token ที่ประหยัดได้ — ถ้าคำสั่งขึ้น error แสดงว่าเครื่องมี rtk คนละตัว (Rust Type Kit) ให้ตรวจสอบด้วย <code>which rtk</code></p>
+
+    <h3>6.6 แอปเดสก์ท็อป</h3>
+    <ul>
+      <li><strong>Cursor</strong> — ดาวน์โหลดจาก <a href="https://cursor.com" target="_blank" rel="noopener">cursor.com</a> แล้วล็อกอินด้วยบัญชีที่สมัครไว้</li>
+      <li><strong>ZCode</strong> — ดาวน์โหลดจาก <a href="https://zcode.z.ai" target="_blank" rel="noopener">zcode.z.ai</a> แล้วเชื่อมกับ GLM Coding Plan (ดูวิธีที่ <a href="https://zcode.z.ai/en/docs/configuration" target="_blank" rel="noopener">Connect Models &amp; Plans</a>)</li>
+      <li><strong>OpenDesign</strong> <span class="badge opt">ทางเลือก</span> — ติดตั้งจาก <a href="https://open-design.ai" target="_blank" rel="noopener">open-design.ai</a> ตอนเปิดครั้งแรกเลือก <em>local coding agent</em> แล้วชี้ไปที่ CLI ที่ติดตั้งไว้ (เช่น Claude Code)</li>
+    </ul>
+  </section>
+
+  <section class="step" id="sec-skills">
+    <div class="step-head"><span class="step-no">07</span><h2>ติดตั้ง Skills</h2></div>
+    <p><strong>Skill</strong> คือชุดคำสั่ง+ความรู้ในรูปไฟล์ <code>SKILL.md</code> ที่สอนให้ agent ทำงานเฉพาะทางได้ดีขึ้น เป็นมาตรฐานเปิดที่ใช้ได้ทั้ง Claude Code, Codex, OpenCode และ Cursor</p>
+
+    <h3>7.1 Superpowers <span class="badge req">จำเป็น</span></h3>
+    <p>ชุด skill ยอดนิยมด้านกระบวนการพัฒนา (brainstorming, TDD, systematic debugging ฯลฯ) จาก <a href="https://github.com/obra/superpowers" target="_blank" rel="noopener">github.com/obra/superpowers</a> — ติดตั้งโดยเปิด Claude Code แล้วพิมพ์:</p>
+    <div class="cmd"><pre><code>/plugin marketplace add obra/superpowers-marketplace
+/plugin install superpowers@superpowers-marketplace</code></pre><button class="copy" type="button">คัดลอก</button></div>
+
+    <h3>7.2 Skills ทางการจาก Anthropic</h3>
+    <p>คลังตัวอย่าง skill ของ Anthropic (งานเอกสาร docx/pdf/pptx/xlsx, สร้าง artifact ฯลฯ) อยู่ที่ <a href="https://github.com/anthropics/skills" target="_blank" rel="noopener">github.com/anthropics/skills</a> วิธีติดตั้งแบบ manual ที่ใช้ได้กับทุกแพลตฟอร์ม:</p>
+    <div class="cmd"><pre><code>mkdir -p ~/.claude/skills
+git clone https://github.com/anthropics/skills.git /tmp/anthropic-skills
+cp -r /tmp/anthropic-skills/&lt;ชื่อโฟลเดอร์สกิลที่ต้องการ&gt; ~/.claude/skills/</code></pre><button class="copy" type="button">คัดลอก</button></div>
+    <h3>7.3 หา skill เพิ่มเติม</h3>
+    <ul>
+      <li>ใน Claude Code พิมพ์ <code>/plugin</code> แล้วเข้าแท็บ <em>Discover</em></li>
+      <li>แคตตาล็อกทางการ: <a href="https://claude.com/plugins" target="_blank" rel="noopener">claude.com/plugins</a></li>
+    </ul>
+  </section>
+
+  <section class="step" id="sec-symlink">
+    <div class="step-head"><span class="step-no">08</span><h2>แชร์ Skills ข้ามแพลตฟอร์มด้วย Symlink</h2></div>
+    <p>แทนที่จะ copy skill ซ้ำไว้หลายที่ ให้เก็บไว้ที่เดียวคือ <code>~/.claude/skills</code> เป็น <em>source of truth</em> แล้วให้แพลตฟอร์มอื่นชี้มาที่นี่ — อัปเดตครั้งเดียว ใช้ได้ทุกเครื่องมือ</p>
+    <ul>
+      <li><strong>OpenCode</strong> — ไม่ต้องทำอะไร อ่าน <code>~/.claude/skills</code> ให้อัตโนมัติอยู่แล้ว (<a href="https://opencode.ai/docs/skills/" target="_blank" rel="noopener">เอกสาร</a>)</li>
+      <li><strong>Codex</strong> — อ่านจาก <code>~/.codex/skills</code> (<a href="https://github.com/openai/codex/blob/main/docs/skills.md" target="_blank" rel="noopener">เอกสาร</a>) ให้ symlink รายสกิลดังนี้:</li>
+    </ul>
+    <div class="cmd"><pre><code>mkdir -p ~/.codex/skills
+for s in ~/.claude/skills/*/; do
+  ln -sfn "$s" ~/.codex/skills/"$(basename "$s")"
+done
+ls -la ~/.codex/skills</code></pre><button class="copy" type="button">คัดลอก</button></div>
+    <p>เพิ่ม skill ใหม่ใน <code>~/.claude/skills</code> เมื่อไร ก็รันลูปนี้ซ้ำหนึ่งครั้งเพื่ออัปเดตลิงก์ (<code>ln -sfn</code> เขียนทับลิงก์เดิมให้เอง)</p>
+    <div class="os-win-only"><div class="note warn"><span class="os-tag">Windows</span> — ทำทั้งหมดนี้ใน WSL และเก็บไฟล์ไว้ในโฮมของ Linux (<code>~/</code>) อย่าเก็บใน <code>/mnt/c/...</code> เพราะ symlink และ performance จะมีปัญหา</div></div>
+  </section>
+
+  <section class="step" id="sec-vercel">
+    <div class="step-head"><span class="step-no">09</span><h2>เชื่อมต่อ Vercel เข้ากับเครื่องมือแต่ละตัว</h2></div>
+
+    <h3>9.1 Vercel CLI <span class="badge req">จำเป็น</span></h3>
+    <div class="cmd"><pre><code>npm install -g vercel
+vercel login
+vercel whoami</code></pre><button class="copy" type="button">คัดลอก</button></div>
+
+    <h3>9.2 Vercel Plugin สำหรับ Claude Code <span class="badge req">จำเป็น</span></h3>
+    <p>ติดตั้งปลั๊กอินทางการของ Vercel (ได้คำสั่ง <code>/deploy</code>, ดู log, จัดการ env และ skill เกี่ยวกับ Next.js/AI SDK อีกชุดใหญ่) — เปิด Claude Code แล้วพิมพ์:</p>
+    <div class="cmd"><pre><code>/plugin install vercel@claude-plugins-official</code></pre><button class="copy" type="button">คัดลอก</button></div>
+
+    <h3>9.3 Vercel MCP สำหรับแพลตฟอร์มอื่น</h3>
+    <p>Vercel มี MCP server ที่ endpoint <code>https://mcp.vercel.com</code> ใช้เชื่อมกับเครื่องมือแต่ละตัว (ครั้งแรกจะมีหน้า OAuth ให้ล็อกอิน Vercel):</p>
+    <div class="tbl"><table>
+      <thead><tr><th>เครื่องมือ</th><th>วิธีเชื่อมต่อ</th></tr></thead>
+      <tbody>
+        <tr><td>Claude Code</td><td>รัน <code>claude mcp add --transport http vercel https://mcp.vercel.com</code></td></tr>
+        <tr><td>Cursor</td><td>Settings → MCP → Add server แล้วใส่ URL (หรือกดปุ่ม <em>Add to Cursor</em> ในหน้าเอกสาร Vercel)</td></tr>
+        <tr><td>ChatGPT</td><td>Settings → Connectors → เพิ่ม MCP connector ด้วย URL เดียวกัน</td></tr>
+        <tr><td>Gemini CLI</td><td>เพิ่มใน <code>~/.gemini/settings.json</code>: <code>{"mcpServers":{"vercel":{"httpUrl":"https://mcp.vercel.com"}}}</code></td></tr>
+        <tr><td>OpenCode</td><td>เพิ่มใน <code>opencode.json</code>: <code>{"mcp":{"vercel":{"type":"remote","url":"https://mcp.vercel.com"}}}</code></td></tr>
+      </tbody>
+    </table></div>
+    <p>รายละเอียดของแต่ละ client ดูได้ที่ <a href="https://vercel.com/docs/mcp" target="_blank" rel="noopener">vercel.com/docs/mcp</a></p>
+    <div class="note">Supabase ก็มี MCP server เช่นกัน — ถ้าอยากเตรียมล่วงหน้า ดูที่ <a href="https://supabase.com/docs/guides/getting-started/mcp" target="_blank" rel="noopener">supabase.com/docs/guides/getting-started/mcp</a></div>
+  </section>
+
+  <section class="step" id="sec-checklist">
+    <div class="step-head"><span class="step-no">10</span><h2>เช็กลิสต์ก่อนวันงาน</h2></div>
+    <p>ติ๊กให้ครบทุกข้อ (หน้านี้จำสถานะไว้ให้ในเบราว์เซอร์ของคุณ) แล้วรันคำสั่งตรวจสอบรวมด้านล่างเป็นขั้นสุดท้าย</p>
+    <div class="checklist" id="checklist">
+      <label class="check"><input type="checkbox" data-k="os"><span class="os-win-only" style="display:inline">WSL2 + Ubuntu ใช้งานได้ (<code>wsl -l -v</code> เป็น VERSION 2)</span><span class="os-mac-only" style="display:none">Xcode CLT + Homebrew ติดตั้งแล้ว</span></label>
+      <label class="check"><input type="checkbox" data-k="linux"><span>ใช้คำสั่งพื้นฐาน Linux ได้ และไปยังไดรฟ์/โฟลเดอร์ต่าง ๆ เป็น</span></label>
+      <label class="check"><input type="checkbox" data-k="git"><span>Git ตั้งค่า user.name / user.email แล้ว</span></label>
+      <label class="check"><input type="checkbox" data-k="node"><span>Node.js LTS + npm ใช้งานได้</span></label>
+      <label class="check"><input type="checkbox" data-k="vscode"><span>VS Code ติดตั้งแล้ว (Windows: พร้อม WSL extension)</span></label>
+      <label class="check"><input type="checkbox" data-k="acc-ai"><span>มีบัญชี Claude (Pro), ChatGPT (Plus), Gemini, Cursor และ Z.ai ครบ</span></label>
+      <label class="check"><input type="checkbox" data-k="acc-dev"><span>มีบัญชี GitHub (เปิด 2FA), Vercel และ Supabase แล้ว</span></label>
+      <label class="check"><input type="checkbox" data-k="gh"><span><code>gh auth status</code> ผ่าน</span></label>
+      <label class="check"><input type="checkbox" data-k="claude"><span>Claude Code ล็อกอินและใช้งานได้</span></label>
+      <label class="check"><input type="checkbox" data-k="codex"><span>Codex CLI ล็อกอินและใช้งานได้</span></label>
+      <label class="check"><input type="checkbox" data-k="gemini"><span>Gemini CLI ล็อกอินและใช้งานได้</span></label>
+      <label class="check"><input type="checkbox" data-k="rtk"><span><code>rtk gain</code> รันได้ไม่ error</span></label>
+      <label class="check"><input type="checkbox" data-k="skills"><span>ติดตั้ง Superpowers แล้ว และ symlink skills ไป Codex แล้ว</span></label>
+      <label class="check"><input type="checkbox" data-k="vercel"><span><code>vercel whoami</code> แสดงชื่อบัญชี + ติดตั้ง Vercel plugin/MCP แล้ว</span></label>
+      <label class="check"><input type="checkbox" data-k="apps"><span>Cursor และ ZCode เปิดใช้งานได้ (OpenCode / OpenDesign ตามสมัครใจ)</span></label>
+    </div>
+    <p class="progress" id="prog">พร้อมแล้ว 0/15</p>
+    <h3>คำสั่งตรวจสอบรวม</h3>
+    <div class="cmd"><pre><code>git --version; node -v; npm -v
+gh --version | head -1; gh auth status
+claude --version; codex --version; gemini --version
+rtk --version; vercel --version</code></pre><button class="copy" type="button">คัดลอก</button></div>
+    <p>ถ้าทุกคำสั่งแสดงเวอร์ชันโดยไม่มี error — เครื่องของคุณพร้อมสำหรับ workshop แล้ว</p>
+  </section>
+
+  <footer class="end">
+    <p>ติดปัญหาขั้นตอนไหน จดหน้าจอ error มาได้เลย เราเผื่อเวลาช่วงเช้าของวัน workshop ไว้ช่วยแก้ให้ — แล้วพบกันครับ</p>
+  </footer>
+</main>
+
+<script>
+(function(){
+  "use strict";
+  function store(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+  function read(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+
+  var btnWin=document.getElementById("btn-win"), btnMac=document.getElementById("btn-mac");
+  function setOS(os){
+    document.body.classList.toggle("os-mac", os==="mac");
+    btnWin.setAttribute("aria-pressed", os==="win" ? "true":"false");
+    btnMac.setAttribute("aria-pressed", os==="mac" ? "true":"false");
+    document.querySelectorAll(".check .os-win-only").forEach(function(el){ el.style.display = os==="win" ? "inline":"none"; });
+    document.querySelectorAll(".check .os-mac-only").forEach(function(el){ el.style.display = os==="mac" ? "inline":"none"; });
+    store("prereq-os", os);
+  }
+  btnWin.addEventListener("click", function(){ setOS("win"); });
+  btnMac.addEventListener("click", function(){ setOS("mac"); });
+  setOS(read("prereq-os")==="mac" ? "mac" : "win");
+
+  document.querySelectorAll(".cmd").forEach(function(box){
+    var btn=box.querySelector("button.copy"), code=box.querySelector("code");
+    if(!btn||!code) return;
+    btn.addEventListener("click", function(){
+      var text=code.textContent;
+      function done(){ btn.textContent="คัดลอกแล้ว"; setTimeout(function(){ btn.textContent="คัดลอก"; },1600); }
+      if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done,done); }
+      else{
+        var ta=document.createElement("textarea"); ta.value=text; document.body.appendChild(ta);
+        ta.select(); try{ document.execCommand("copy"); }catch(e){} document.body.removeChild(ta); done();
+      }
+    });
+  });
+
+  var boxes=document.querySelectorAll("#checklist input[type=checkbox]"), prog=document.getElementById("prog");
+  var saved={};
+  try{ saved=JSON.parse(read("prereq-checks")||"{}")||{}; }catch(e){ saved={}; }
+  function update(){
+    var n=0, state={};
+    boxes.forEach(function(b){ if(b.checked) n++; state[b.dataset.k]=b.checked; });
+    prog.textContent="พร้อมแล้ว "+n+"/"+boxes.length;
+    store("prereq-checks", JSON.stringify(state));
+  }
+  boxes.forEach(function(b){
+    if(saved[b.dataset.k]) b.checked=true;
+    b.addEventListener("change", update);
+  });
+  update();
+})();
+</script>
+</body>
+</html>
