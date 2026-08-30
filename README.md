@@ -8,6 +8,12 @@
 
 **[เปิดเอกสารเตรียมความพร้อม → dhanabhon.github.io/ai-ready-developers-workshop](https://dhanabhon.github.io/ai-ready-developers-workshop/)**
 
+หรือสแกน QR ด้านล่างเพื่อเปิดบนมือถือ:
+
+<a href="https://shor10.co/ai-dev-workshop-prereqs">
+  <img src="docs/assets/prerequisites-qr.png" alt="QR code ไปยังเอกสารเตรียมความพร้อม" width="180">
+</a>
+
 เนื้อหาครอบคลุมตามลำดับ 00–10:
 
 - สเปกเครื่องที่แนะนำ และการเตรียมระบบปฏิบัติการ (WSL2 บน Windows / Homebrew บน macOS)
