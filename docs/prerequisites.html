@@ -167,7 +167,8 @@
     <h1>เตรียมเครื่องให้พร้อม ก่อนวัน Workshop</h1>
     <p class="lead">เอกสารนี้พาไปทีละขั้น ตั้งแต่เตรียมระบบปฏิบัติการ สมัครบัญชีที่ต้องใช้ ไปจนถึงติดตั้งเครื่องมือ AI Coding ทั้งหมด ทำตามลำดับ 00 → 10 ให้ครบก่อนวันจริง จะได้ลงมือทำ workshop ได้ทันทีโดยไม่เสียเวลาติดตั้ง</p>
     <div class="meta">
-      <span class="chip acc">ใช้เวลาเตรียมราว 1–2 ชั่วโมง</span>
+      <span class="chip acc">เตรียมครบได้ด้วย Free tier ทั้งหมด</span>
+      <span class="chip">ใช้เวลาเตรียมราว 1–2 ชั่วโมง</span>
       <span class="chip">รองรับ Windows และ macOS</span>
       <span class="chip">สลับระบบปฏิบัติการได้ที่มุมขวาบน</span>
     </div>
@@ -356,20 +357,30 @@ node -v && npm -v</code></pre><button class="copy" type="button">คัดลอ
 
   <section class="step" id="sec-ai-accounts">
     <div class="step-head"><span class="step-no">04</span><h2>สมัครบัญชีแพลตฟอร์ม AI</h2></div>
-    <p>Workshop นี้ใช้ AI Coding Agent หลายแบรนด์ แนะนำให้<strong>สมัครด้วยอีเมลเดียวกันทุกแพลตฟอร์ม</strong>และเปิด 2FA ทุกบัญชี</p>
+    <p>Workshop นี้ออกแบบให้ทำครบทุกขั้นได้ด้วย <strong>Free tier ล้วน</strong> — สมัคร "กลุ่มฟรี" ให้ครบทุกคน ส่วนแผนเสียเงินเป็นทางเลือกสำหรับคนที่มีอยู่แล้วหรืออยากใช้ agent ค่ายนั้นโดยเฉพาะ แนะนำให้สมัครด้วยอีเมลเดียวกันทุกแพลตฟอร์มและเปิด 2FA ทุกบัญชี</p>
+
+    <h3>4.1 กลุ่มฟรี <span class="badge req">จำเป็น — สมัครให้ครบ</span></h3>
     <div class="tbl"><table>
-      <thead><tr><th>แพลตฟอร์ม</th><th>สมัครที่</th><th>แผนที่แนะนำ</th><th>ใช้ทำอะไร</th></tr></thead>
+      <thead><tr><th>แพลตฟอร์ม</th><th>สมัครที่</th><th>ค่าใช้จ่าย</th><th>ใช้ทำอะไร</th></tr></thead>
       <tbody>
-        <tr><td>Claude <span class="badge req">จำเป็น</span></td><td><a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a></td><td>Pro ขึ้นไป (จำเป็นสำหรับ Claude Code)</td><td>Claude Code CLI และแชต</td></tr>
-        <tr><td>ChatGPT <span class="badge req">จำเป็น</span></td><td><a href="https://chatgpt.com" target="_blank" rel="noopener">chatgpt.com</a></td><td>Plus ขึ้นไป (จำเป็นสำหรับ Codex)</td><td>Codex CLI และแชต</td></tr>
-        <tr><td>Gemini <span class="badge req">จำเป็น</span></td><td><a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a></td><td>บัญชี Google ฟรีก็ใช้ได้</td><td>Gemini CLI และแชต</td></tr>
-        <tr><td>Cursor <span class="badge req">จำเป็น</span></td><td><a href="https://cursor.com" target="_blank" rel="noopener">cursor.com</a></td><td>Free (Pro ถ้าต้องการใช้จริงจัง)</td><td>AI IDE</td></tr>
-        <tr><td>Z.ai / ZCode <span class="badge req">จำเป็น</span></td><td><a href="https://z.ai/subscribe" target="_blank" rel="noopener">z.ai/subscribe</a></td><td>GLM Coding Plan Lite (มี free trial)</td><td>ZCode IDE และใช้โมเดล GLM กับ CLI อื่น</td></tr>
-        <tr><td>OpenCode <span class="badge opt">ทางเลือก</span></td><td><a href="https://opencode.ai" target="_blank" rel="noopener">opencode.ai</a></td><td>ฟรี (BYOK — ใช้บัญชี provider ที่มีอยู่)</td><td>Open-source coding agent ในเทอร์มินัล</td></tr>
-        <tr><td>OpenDesign <span class="badge opt">ทางเลือก</span></td><td><a href="https://open-design.ai" target="_blank" rel="noopener">open-design.ai</a></td><td>ฟรี open-source (ขับเคลื่อนด้วย CLI agent ในเครื่อง)</td><td>งานออกแบบ UI ด้วย AI</td></tr>
+        <tr><td>Gemini</td><td><a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a></td><td>ฟรี (บัญชี Google)</td><td>Gemini CLI + แชต — agent หลักสาย Free ของ workshop</td></tr>
+        <tr><td>Cursor</td><td><a href="https://cursor.com" target="_blank" rel="noopener">cursor.com</a></td><td>Free plan</td><td>AI IDE</td></tr>
+        <tr><td>OpenCode</td><td><a href="https://opencode.ai" target="_blank" rel="noopener">opencode.ai</a></td><td>ฟรี (BYOK — จับคู่กับ Gemini หรือ GLM trial ได้)</td><td>Coding agent ในเทอร์มินัล</td></tr>
+        <tr><td>OpenDesign <span class="badge opt">ทางเลือก</span></td><td><a href="https://open-design.ai" target="_blank" rel="noopener">open-design.ai</a></td><td>ฟรี open-source</td><td>งานออกแบบ UI — เฉพาะคนสนใจสายดีไซน์</td></tr>
       </tbody>
     </table></div>
-    <div class="note">Z.ai / ZCode: สมัครบัญชี Z.ai แล้วเปิดใช้ GLM Coding Plan (มีช่วงทดลองฟรี) — แผนเดียวกันนี้เอาไปใช้กับ Claude Code, OpenCode และเครื่องมืออื่นได้ด้วย ดูเอกสารที่ <a href="https://zcode.z.ai/en/docs" target="_blank" rel="noopener">zcode.z.ai/en/docs</a></div>
+
+    <h3>4.2 กลุ่มแผนเสียเงิน <span class="badge opt">ทางเลือก</span></h3>
+    <p>ไม่บังคับสำหรับ workshop — แต่ถ้ามีอยู่แล้วหรือพร้อมลงทุน จะได้ใช้ agent เรือธงของค่ายนั้นควบคู่ไปด้วย (เรียงจากประหยัดสุด)</p>
+    <div class="tbl"><table>
+      <thead><tr><th>แพลตฟอร์ม</th><th>สมัครที่</th><th>ค่าใช้จ่าย</th><th>ปลดล็อกอะไร</th></tr></thead>
+      <tbody>
+        <tr><td>Z.ai / ZCode</td><td><a href="https://z.ai/subscribe" target="_blank" rel="noopener">z.ai/subscribe</a></td><td>GLM Coding Lite — มี trial ฟรี ถูกกว่า Pro/Plus หลายเท่า</td><td>ZCode IDE + ใช้โมเดล GLM กับ OpenCode และ CLI อื่น</td></tr>
+        <tr><td>Claude</td><td><a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a></td><td>Pro ~US$20/เดือน</td><td>Claude Code CLI (ต้องมี Pro ขึ้นไป)</td></tr>
+        <tr><td>ChatGPT</td><td><a href="https://chatgpt.com" target="_blank" rel="noopener">chatgpt.com</a></td><td>Plus ~US$20/เดือน</td><td>Codex CLI (ต้องมี Plus ขึ้นไป)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note">ทำ workshop ได้ครบทุกขั้นด้วยกลุ่มฟรี — ถ้าอยากลอง agent เสียเงินสักตัว แนะนำเริ่มที่ <strong>GLM Coding Plan</strong> (มี trial ฟรี) เพราะแผนเดียวใช้ได้ทั้ง ZCode, OpenCode และเครื่องมืออื่น ดูเอกสารที่ <a href="https://zcode.z.ai/en/docs" target="_blank" rel="noopener">zcode.z.ai/en/docs</a></div>
   </section>
 
   <section class="step" id="sec-dev-accounts">
@@ -389,34 +400,34 @@ node -v && npm -v</code></pre><button class="copy" type="button">คัดลอ
     <div class="step-head"><span class="step-no">06</span><h2>ติดตั้ง AI Coding CLI และแอป</h2></div>
     <div class="os-win-only"><p><span class="os-tag">Windows</span> — CLI ทุกตัวในหัวข้อนี้ติดตั้งใน <strong>Ubuntu (WSL)</strong> ส่วนแอป Cursor / ZCode ติดตั้งฝั่ง Windows ปกติ</p></div>
 
-    <h3>6.1 Claude Code <span class="badge req">จำเป็น</span></h3>
-    <div class="cmd"><pre><code>curl -fsSL https://claude.ai/install.sh | bash</code></pre><button class="copy" type="button">คัดลอก</button></div>
-    <p>(หรือ <code>npm install -g @anthropic-ai/claude-code</code>) เสร็จแล้วเปิดโปรเจกต์ใดก็ได้ รัน <code>claude</code> แล้วล็อกอินด้วยบัญชี Claude Pro/Max</p>
-
-    <h3>6.2 Codex CLI <span class="badge req">จำเป็น</span></h3>
-    <div class="cmd"><pre><code>npm install -g @openai/codex</code></pre><button class="copy" type="button">คัดลอก</button></div>
-    <p>รัน <code>codex</code> แล้วเลือก <em>Sign in with ChatGPT</em> — เอกสาร: <a href="https://developers.openai.com/codex/cli" target="_blank" rel="noopener">developers.openai.com/codex/cli</a></p>
-
-    <h3>6.3 Gemini CLI <span class="badge req">จำเป็น</span></h3>
+    <h3>6.1 Gemini CLI <span class="badge req">จำเป็น · ฟรี</span></h3>
     <div class="cmd"><pre><code>npm install -g @google/gemini-cli</code></pre><button class="copy" type="button">คัดลอก</button></div>
-    <p>รัน <code>gemini</code> แล้วล็อกอินด้วยบัญชี Google — เอกสาร: <a href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener">github.com/google-gemini/gemini-cli</a></p>
+    <p>รัน <code>gemini</code> แล้วล็อกอินด้วยบัญชี Google — ใช้ฟรี โควตาเหลือเฟือสำหรับ workshop — เอกสาร: <a href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener">github.com/google-gemini/gemini-cli</a></p>
 
-    <h3>6.4 OpenCode <span class="badge opt">ทางเลือก</span></h3>
+    <h3>6.2 OpenCode <span class="badge req">จำเป็น · ฟรี</span></h3>
     <div class="cmd"><pre><code>curl -fsSL https://opencode.ai/install | bash</code></pre><button class="copy" type="button">คัดลอก</button></div>
-    <p>(หรือ <code>npm install -g opencode-ai</code>) แล้วรัน <code>opencode auth login</code> เพื่อเชื่อม provider ที่มีอยู่ เช่น Claude หรือ GLM</p>
+    <p>(หรือ <code>npm install -g opencode-ai</code>) แล้วรัน <code>opencode auth login</code> เชื่อม provider ที่มี — สาย Free จับคู่กับ Gemini หรือ GLM trial ได้เลย</p>
 
-    <h3>6.5 rtk CLI — Token Optimization <span class="badge req">จำเป็น</span></h3>
+    <h3>6.3 rtk CLI — Token Optimization <span class="badge req">จำเป็น</span></h3>
     <p><a href="https://www.rtk-ai.app/" target="_blank" rel="noopener">rtk</a> เป็น CLI proxy ที่ช่วยลดการใช้ token ของ AI agent ลง 60–90% เวลาเรียกคำสั่ง dev ทั่วไป (git, test, build ฯลฯ):</p>
     <div class="cmd"><pre><code>brew install rtk
 rtk --version
 rtk gain</code></pre><button class="copy" type="button">คัดลอก</button></div>
     <p><code>rtk gain</code> ใช้ดูสถิติ token ที่ประหยัดได้ — ถ้าคำสั่งขึ้น error แสดงว่าเครื่องมี rtk คนละตัว (Rust Type Kit) ให้ตรวจสอบด้วย <code>which rtk</code></p>
 
+    <h3>6.4 Claude Code <span class="badge opt">ทางเลือก — ต้องมี Claude Pro</span></h3>
+    <div class="cmd"><pre><code>curl -fsSL https://claude.ai/install.sh | bash</code></pre><button class="copy" type="button">คัดลอก</button></div>
+    <p>(หรือ <code>npm install -g @anthropic-ai/claude-code</code>) รัน <code>claude</code> แล้วล็อกอินด้วยบัญชี Claude Pro/Max — ติดตั้งเฉพาะคนที่สมัครแผนเสียเงินไว้</p>
+
+    <h3>6.5 Codex CLI <span class="badge opt">ทางเลือก — ต้องมี ChatGPT Plus</span></h3>
+    <div class="cmd"><pre><code>npm install -g @openai/codex</code></pre><button class="copy" type="button">คัดลอก</button></div>
+    <p>รัน <code>codex</code> แล้วเลือก <em>Sign in with ChatGPT</em> — เอกสาร: <a href="https://developers.openai.com/codex/cli" target="_blank" rel="noopener">developers.openai.com/codex/cli</a></p>
+
     <h3>6.6 แอปเดสก์ท็อป</h3>
     <ul>
-      <li><strong>Cursor</strong> — ดาวน์โหลดจาก <a href="https://cursor.com" target="_blank" rel="noopener">cursor.com</a> แล้วล็อกอินด้วยบัญชีที่สมัครไว้</li>
-      <li><strong>ZCode</strong> — ดาวน์โหลดจาก <a href="https://zcode.z.ai" target="_blank" rel="noopener">zcode.z.ai</a> แล้วเชื่อมกับ GLM Coding Plan (ดูวิธีที่ <a href="https://zcode.z.ai/en/docs/configuration" target="_blank" rel="noopener">Connect Models &amp; Plans</a>)</li>
-      <li><strong>OpenDesign</strong> <span class="badge opt">ทางเลือก</span> — ติดตั้งจาก <a href="https://open-design.ai" target="_blank" rel="noopener">open-design.ai</a> ตอนเปิดครั้งแรกเลือก <em>local coding agent</em> แล้วชี้ไปที่ CLI ที่ติดตั้งไว้ (เช่น Claude Code)</li>
+      <li><strong>Cursor</strong> (ฟรี) — ดาวน์โหลดจาก <a href="https://cursor.com" target="_blank" rel="noopener">cursor.com</a> แล้วล็อกอินด้วยบัญชีที่สมัครไว้</li>
+      <li><strong>ZCode</strong> <span class="badge opt">ทางเลือก</span> — ดาวน์โหลดจาก <a href="https://zcode.z.ai" target="_blank" rel="noopener">zcode.z.ai</a> แล้วเชื่อมกับ GLM Coding Plan (ดูวิธีที่ <a href="https://zcode.z.ai/en/docs/configuration" target="_blank" rel="noopener">Connect Models &amp; Plans</a>)</li>
+      <li><strong>OpenDesign</strong> <span class="badge opt">ทางเลือก</span> — ติดตั้งจาก <a href="https://open-design.ai" target="_blank" rel="noopener">open-design.ai</a> ตอนเปิดครั้งแรกเลือก <em>local coding agent</em> แล้วชี้ไปที่ CLI ที่ติดตั้งไว้ (เช่น Gemini CLI หรือ OpenCode)</li>
     </ul>
   </section>
 
@@ -428,6 +439,7 @@ rtk gain</code></pre><button class="copy" type="button">คัดลอก</butt
     <p>ชุด skill ยอดนิยมด้านกระบวนการพัฒนา (brainstorming, TDD, systematic debugging ฯลฯ) จาก <a href="https://github.com/obra/superpowers" target="_blank" rel="noopener">github.com/obra/superpowers</a> — ติดตั้งโดยเปิด Claude Code แล้วพิมพ์:</p>
     <div class="cmd"><pre><code>/plugin marketplace add obra/superpowers-marketplace
 /plugin install superpowers@superpowers-marketplace</code></pre><button class="copy" type="button">คัดลอก</button></div>
+    <p>ถ้าไม่ได้ใช้ Claude Code: clone <a href="https://github.com/obra/superpowers" target="_blank" rel="noopener">obra/superpowers</a> แล้ว copy โฟลเดอร์ skill ที่ต้องการเข้า <code>~/.claude/skills</code> แบบเดียวกับข้อ 7.2 ได้เช่นกัน</p>
 
     <h3>7.2 Skills ทางการจาก Anthropic</h3>
     <p>คลังตัวอย่าง skill ของ Anthropic (งานเอกสาร docx/pdf/pptx/xlsx, สร้าง artifact ฯลฯ) อยู่ที่ <a href="https://github.com/anthropics/skills" target="_blank" rel="noopener">github.com/anthropics/skills</a> วิธีติดตั้งแบบ manual ที่ใช้ได้กับทุกแพลตฟอร์ม:</p>
@@ -465,7 +477,7 @@ ls -la ~/.codex/skills</code></pre><button class="copy" type="button">คัด�
 vercel login
 vercel whoami</code></pre><button class="copy" type="button">คัดลอก</button></div>
 
-    <h3>9.2 Vercel Plugin สำหรับ Claude Code <span class="badge req">จำเป็น</span></h3>
+    <h3>9.2 Vercel Plugin สำหรับ Claude Code <span class="badge opt">ทางเลือก — สำหรับผู้ใช้ Claude Code</span></h3>
     <p>ติดตั้งปลั๊กอินทางการของ Vercel (ได้คำสั่ง <code>/deploy</code>, ดู log, จัดการ env และ skill เกี่ยวกับ Next.js/AI SDK อีกชุดใหญ่) — เปิด Claude Code แล้วพิมพ์:</p>
     <div class="cmd"><pre><code>/plugin install vercel@claude-plugins-official</code></pre><button class="copy" type="button">คัดลอก</button></div>
 
@@ -494,16 +506,16 @@ vercel whoami</code></pre><button class="copy" type="button">คัดลอก<
       <label class="check"><input type="checkbox" data-k="git"><span>Git ตั้งค่า user.name / user.email แล้ว</span></label>
       <label class="check"><input type="checkbox" data-k="node"><span>Node.js LTS + npm ใช้งานได้</span></label>
       <label class="check"><input type="checkbox" data-k="vscode"><span>VS Code ติดตั้งแล้ว (Windows: พร้อม WSL extension)</span></label>
-      <label class="check"><input type="checkbox" data-k="acc-ai"><span>มีบัญชี Claude (Pro), ChatGPT (Plus), Gemini, Cursor และ Z.ai ครบ</span></label>
+      <label class="check"><input type="checkbox" data-k="acc-ai"><span>มีบัญชีกลุ่มฟรีครบ: Gemini, Cursor และ OpenCode</span></label>
       <label class="check"><input type="checkbox" data-k="acc-dev"><span>มีบัญชี GitHub (เปิด 2FA), Vercel และ Supabase แล้ว</span></label>
       <label class="check"><input type="checkbox" data-k="gh"><span><code>gh auth status</code> ผ่าน</span></label>
-      <label class="check"><input type="checkbox" data-k="claude"><span>Claude Code ล็อกอินและใช้งานได้</span></label>
-      <label class="check"><input type="checkbox" data-k="codex"><span>Codex CLI ล็อกอินและใช้งานได้</span></label>
-      <label class="check"><input type="checkbox" data-k="gemini"><span>Gemini CLI ล็อกอินและใช้งานได้</span></label>
+      <label class="check"><input type="checkbox" data-k="claude"><span>Gemini CLI ล็อกอินและใช้งานได้</span></label>
+      <label class="check"><input type="checkbox" data-k="codex"><span>OpenCode ล็อกอินและใช้งานได้</span></label>
+      <label class="check"><input type="checkbox" data-k="gemini"><span>(ทางเลือก) Claude Code / Codex ใช้งานได้ ถ้าสมัครแผนเสียเงิน</span></label>
       <label class="check"><input type="checkbox" data-k="rtk"><span><code>rtk gain</code> รันได้ไม่ error</span></label>
       <label class="check"><input type="checkbox" data-k="skills"><span>ติดตั้ง Superpowers แล้ว และ symlink skills ไป Codex แล้ว</span></label>
       <label class="check"><input type="checkbox" data-k="vercel"><span><code>vercel whoami</code> แสดงชื่อบัญชี + ติดตั้ง Vercel plugin/MCP แล้ว</span></label>
-      <label class="check"><input type="checkbox" data-k="apps"><span>Cursor และ ZCode เปิดใช้งานได้ (OpenCode / OpenDesign ตามสมัครใจ)</span></label>
+      <label class="check"><input type="checkbox" data-k="apps"><span>Cursor เปิดใช้งานได้ (ZCode / OpenDesign ตามสมัครใจ)</span></label>
     </div>
     <p class="progress" id="prog">พร้อมแล้ว 0/15</p>
     <h3>คำสั่งตรวจสอบรวม</h3>
