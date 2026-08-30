@@ -340,6 +340,8 @@ git config --global init.defaultBranch main</code></pre><button class="copy" typ
     <p>ปิด–เปิดเทอร์มินัลใหม่ แล้วติดตั้ง Node LTS:</p>
     <div class="cmd"><pre><code>nvm install --lts
 node -v && npm -v</code></pre><button class="copy" type="button">คัดลอก</button></div>
+    <p>แถมอีกหนึ่งอย่างที่ควรทำจากบ้าน: ดาวน์โหลด browser ของ Playwright เตรียมไว้สำหรับช่วงทดสอบท้าย workshop (ไฟล์หลายร้อย MB — อย่ารอโหลดผ่าน Wi-Fi หน้างาน):</p>
+    <div class="cmd"><pre><code>npx -y playwright@latest install chromium</code></pre><button class="copy" type="button">คัดลอก</button></div>
 
     <h3>3.3 GitHub CLI (gh) <span class="badge req">จำเป็น</span></h3>
     <div class="cmd"><pre><code>brew install gh</code></pre><button class="copy" type="button">คัดลอก</button></div>
@@ -439,7 +441,7 @@ rtk gain</code></pre><button class="copy" type="button">คัดลอก</butt
     <div class="step-head"><span class="step-no">07</span><h2>ติดตั้ง Skills</h2></div>
     <p><strong>Skill</strong> คือชุดคำสั่ง+ความรู้ในรูปไฟล์ <code>SKILL.md</code> ที่สอนให้ agent ทำงานเฉพาะทางได้ดีขึ้น เป็นมาตรฐานเปิดที่ใช้ได้ทั้ง Claude Code, Codex, OpenCode และ Cursor</p>
 
-    <h3>7.1 Superpowers <span class="badge req">จำเป็น</span></h3>
+    <h3>7.1 Superpowers <span class="badge opt">แนะนำ</span></h3>
     <p>ชุด skill ยอดนิยมด้านกระบวนการพัฒนา (brainstorming, TDD, systematic debugging ฯลฯ) จาก <a href="https://github.com/obra/superpowers" target="_blank" rel="noopener">github.com/obra/superpowers</a> — ติดตั้งโดยเปิด Claude Code แล้วพิมพ์:</p>
     <div class="cmd"><pre><code>/plugin marketplace add obra/superpowers-marketplace
 /plugin install superpowers@superpowers-marketplace</code></pre><button class="copy" type="button">คัดลอก</button></div>
@@ -510,14 +512,14 @@ vercel whoami</code></pre><button class="copy" type="button">คัดลอก<
       <label class="check"><input type="checkbox" data-k="git"><span>Git ตั้งค่า user.name / user.email แล้ว</span></label>
       <label class="check"><input type="checkbox" data-k="node"><span>Node.js LTS + npm ใช้งานได้</span></label>
       <label class="check"><input type="checkbox" data-k="vscode"><span>VS Code ติดตั้งแล้ว (Windows: พร้อม WSL extension)</span></label>
-      <label class="check"><input type="checkbox" data-k="acc-ai"><span>มีบัญชีกลุ่มฟรีครบ: Gemini, Cursor และ OpenCode</span></label>
+      <label class="check"><input type="checkbox" data-k="acc-ai"><span>มีบัญชีกลุ่มฟรีครบ: Google Antigravity, Cursor และ OpenCode</span></label>
       <label class="check"><input type="checkbox" data-k="acc-dev"><span>มีบัญชี GitHub (เปิด 2FA), Vercel, Supabase (และ Resend ถ้าสมัคร) แล้ว</span></label>
       <label class="check"><input type="checkbox" data-k="gh"><span><code>gh auth status</code> ผ่าน</span></label>
       <label class="check"><input type="checkbox" data-k="claude"><span>Antigravity CLI (agy) ล็อกอินและใช้งานได้</span></label>
       <label class="check"><input type="checkbox" data-k="codex"><span>OpenCode ล็อกอินและใช้งานได้</span></label>
       <label class="check"><input type="checkbox" data-k="gemini"><span>(ทางเลือก) Claude Code / Codex ใช้งานได้ ถ้าสมัครแผนเสียเงิน</span></label>
       <label class="check"><input type="checkbox" data-k="rtk"><span><code>rtk gain</code> รันได้ไม่ error</span></label>
-      <label class="check"><input type="checkbox" data-k="skills"><span>ติดตั้ง Superpowers แล้ว และ symlink skills ไป Codex แล้ว</span></label>
+      <label class="check"><input type="checkbox" data-k="skills"><span>ติดตั้ง Superpowers แล้ว (symlink ไป Codex เฉพาะคนที่ใช้ Codex)</span></label>
       <label class="check"><input type="checkbox" data-k="vercel"><span><code>vercel whoami</code> แสดงชื่อบัญชี + ติดตั้ง Vercel plugin/MCP แล้ว</span></label>
       <label class="check"><input type="checkbox" data-k="apps"><span>Cursor เปิดใช้งานได้ (ZCode / OpenDesign ตามสมัครใจ)</span></label>
     </div>
