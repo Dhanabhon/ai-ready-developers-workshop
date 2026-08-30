@@ -30,3 +30,6 @@ yarn-error.log*
 *.log
 *.tmp
 *.bak
+
+# Workshop material — local only until workshop day
+docs/workshop.html
