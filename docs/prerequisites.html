@@ -390,7 +390,9 @@ node -v && npm -v</code></pre><button class="copy" type="button">คัดลอ
       <li><strong>GitHub</strong> — <a href="https://github.com/signup" target="_blank" rel="noopener">github.com/signup</a> สมัครแล้วเปิด 2FA (Settings → Password and authentication)</li>
       <li><strong>Vercel</strong> — <a href="https://vercel.com/signup" target="_blank" rel="noopener">vercel.com/signup</a> เลือก <em>Continue with GitHub</em> (แผน Hobby ฟรี)</li>
       <li><strong>Supabase</strong> — <a href="https://supabase.com" target="_blank" rel="noopener">supabase.com</a> เลือก <em>Sign in with GitHub</em> (แผน Free)</li>
+      <li><strong>Resend</strong> <span class="badge opt">ทางเลือก — แนะนำ</span> — <a href="https://resend.com" target="_blank" rel="noopener">resend.com</a> เลือก <em>Sign in with GitHub</em> (Free 100 อีเมล/วัน) แล้วสร้าง <em>API key</em> เก็บไว้</li>
     </ol>
+    <div class="note">ทำไมควรมี Resend: อีเมล magic link แบบ built-in ของ Supabase จำกัด <strong>2 ฉบับ/ชั่วโมง</strong> และส่งถึงเฉพาะอีเมลเจ้าของโปรเจกต์ — เอา Resend มาต่อเป็น custom SMTP แล้วเพดานจะกว้างพอสำหรับทดสอบล็อกอินทั้งวัน (แต่ยังส่งถึงอีเมลตัวเองเท่านั้น จนกว่าจะยืนยันโดเมนส่วนตัวกับ Resend)</div>
     <p>จากนั้นกลับมาที่เทอร์มินัล ล็อกอิน GitHub CLI:</p>
     <div class="cmd"><pre><code>gh auth login</code></pre><button class="copy" type="button">คัดลอก</button></div>
     <p>เลือก GitHub.com → HTTPS → Login with a web browser แล้วทำตามขั้นตอน ตรวจสอบผลด้วย <code>gh auth status</code></p>
@@ -509,7 +511,7 @@ vercel whoami</code></pre><button class="copy" type="button">คัดลอก<
       <label class="check"><input type="checkbox" data-k="node"><span>Node.js LTS + npm ใช้งานได้</span></label>
       <label class="check"><input type="checkbox" data-k="vscode"><span>VS Code ติดตั้งแล้ว (Windows: พร้อม WSL extension)</span></label>
       <label class="check"><input type="checkbox" data-k="acc-ai"><span>มีบัญชีกลุ่มฟรีครบ: Gemini, Cursor และ OpenCode</span></label>
-      <label class="check"><input type="checkbox" data-k="acc-dev"><span>มีบัญชี GitHub (เปิด 2FA), Vercel และ Supabase แล้ว</span></label>
+      <label class="check"><input type="checkbox" data-k="acc-dev"><span>มีบัญชี GitHub (เปิด 2FA), Vercel, Supabase (และ Resend ถ้าสมัคร) แล้ว</span></label>
       <label class="check"><input type="checkbox" data-k="gh"><span><code>gh auth status</code> ผ่าน</span></label>
       <label class="check"><input type="checkbox" data-k="claude"><span>Antigravity CLI (agy) ล็อกอินและใช้งานได้</span></label>
       <label class="check"><input type="checkbox" data-k="codex"><span>OpenCode ล็อกอินและใช้งานได้</span></label>
