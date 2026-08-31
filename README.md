@@ -23,4 +23,10 @@
 - การติดตั้ง AI Coding CLI, rtk, Skills (Superpowers) และการ symlink skills ข้ามแพลตฟอร์ม
 - การเชื่อมต่อ Vercel (CLI, plugin, MCP) และเช็กลิสต์ตรวจความพร้อมก่อนวันงาน
 
-> ไฟล์ต้นฉบับอยู่ที่ [docs/prerequisites.html](docs/prerequisites.html) — แก้ไขแล้ว push ขึ้น `main` ได้เลย GitHub Pages (เสิร์ฟจากโฟลเดอร์ `/docs`) จะ rebuild ให้อัตโนมัติภายในราว 1 นาที
+## คู่มือระหว่างเรียน (Build Guide)
+
+คู่มือ build-along สร้างระบบ TDC e-Asset ตาม 11 milestones ตั้งแต่ตั้งโปรเจกต์จนขึ้น Production ใช้เปิดตามระหว่างทำ workshop:
+
+**[เปิด Build Guide → dhanabhon.github.io/ai-ready-developers-workshop/workshop](https://dhanabhon.github.io/ai-ready-developers-workshop/workshop/)**
+
+> ไฟล์ต้นฉบับอยู่ที่ [docs/prerequisites.html](docs/prerequisites.html) และ [docs/workshop/](docs/workshop/) — แก้ไขแล้ว push ขึ้น `main` ได้เลย GitHub Pages (เสิร์ฟจากโฟลเดอร์ `/docs`) จะ rebuild ให้อัตโนมัติภายในราว 1 นาที
