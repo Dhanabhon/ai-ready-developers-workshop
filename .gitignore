@@ -36,3 +36,15 @@ docs/workshop.html
 docs/workshop/*
 !docs/workshop/index.html
 release.sh
+!docs/workshop/m0.html
+!docs/workshop/m1.html
+!docs/workshop/m2.html
+!docs/workshop/m3.html
+!docs/workshop/m4.html
+!docs/workshop/m5.html
+!docs/workshop/m6.html
+!docs/workshop/m7.html
+!docs/workshop/m8.html
+!docs/workshop/m9.html
+!docs/workshop/m10.html
+!docs/workshop/bonus.html
