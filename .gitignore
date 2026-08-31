@@ -31,6 +31,8 @@ yarn-error.log*
 *.tmp
 *.bak
 
-# Workshop material — local only until workshop day
+# Workshop material — ปล่อยรายไฟล์ผ่าน whitelist ด้านล่างเท่านั้น (วันงานใช้ ./release.sh mX)
 docs/workshop.html
-docs/workshop/
+docs/workshop/*
+!docs/workshop/index.html
+release.sh
