@@ -1,0 +1,261 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "ระบบบริหารจัดการครุภัณฑ์ (Asset Management System)",
+    "output": "asset-management.html",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1390,
+      620
+    ]
+  },
+  "components": [
+    {
+      "id": "cursor",
+      "type": "external",
+      "label": "AI Coding Agent",
+      "sublabel": "Cursor · Claude Code · ฯลฯ",
+      "pos": [
+        25,
+        60
+      ],
+      "size": [
+        175,
+        76
+      ],
+      "tag": "multi-vendor"
+    },
+    {
+      "id": "github",
+      "type": "external",
+      "label": "GitHub",
+      "sublabel": "Git Flow",
+      "brand": "github",
+      "pos": [
+        25,
+        250
+      ],
+      "size": [
+        175,
+        76
+      ]
+    },
+    {
+      "id": "deploy",
+      "type": "cloud",
+      "label": "Auto-Deploy",
+      "sublabel": "Preview & Prod",
+      "brand": "vercel",
+      "pos": [
+        25,
+        440
+      ],
+      "size": [
+        175,
+        76
+      ]
+    },
+    {
+      "id": "admin",
+      "type": "external",
+      "label": "Admin User",
+      "sublabel": "Web Browser",
+      "tag": "WebAuthn / OAuth",
+      "pos": [
+        330,
+        25
+      ],
+      "size": [
+        215,
+        78
+      ]
+    },
+    {
+      "id": "middleware",
+      "type": "security",
+      "label": "Next.js Middleware",
+      "sublabel": "เฉพาะ Admin เท่านั้น",
+      "tag": "App Router",
+      "brand": "next-js",
+      "pos": [
+        330,
+        195
+      ],
+      "size": [
+        215,
+        90
+      ]
+    },
+    {
+      "id": "client",
+      "type": "frontend",
+      "label": "Client-Side (Tailwind UI)",
+      "sublabel": "Dashboard · CRUD · ยืม / คืน",
+      "pos": [
+        700,
+        185
+      ],
+      "size": [
+        255,
+        105
+      ]
+    },
+    {
+      "id": "server",
+      "type": "backend",
+      "label": "Server-Side (Server Actions)",
+      "sublabel": "Reports · ตัดสต็อก / คืนของ",
+      "pos": [
+        700,
+        375
+      ],
+      "size": [
+        255,
+        105
+      ]
+    },
+    {
+      "id": "auth",
+      "type": "security",
+      "label": "Supabase Auth",
+      "sublabel": "Passwordless · JWT",
+      "brand": "supabase",
+      "pos": [
+        1085,
+        245
+      ],
+      "size": [
+        245,
+        110
+      ]
+    },
+    {
+      "id": "db",
+      "type": "database",
+      "label": "PostgreSQL",
+      "sublabel": "Users · Assets · Trx",
+      "brand": "postgresql",
+      "pos": [
+        1085,
+        450
+      ],
+      "size": [
+        245,
+        110
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "VERCEL — Next.js App Router",
+      "wraps": [
+        "middleware",
+        "client",
+        "server"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "SUPABASE — BaaS",
+      "wraps": [
+        "auth",
+        "db"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "login",
+      "from": "admin",
+      "to": "middleware",
+      "label": "1. เข้าสู่ระบบ",
+      "variant": "emphasis",
+      "labelDy": 24
+    },
+    {
+      "id": "gate",
+      "from": "middleware",
+      "to": "client",
+      "label": "ผ่านสิทธิ์ → UI",
+      "variant": "security"
+    },
+    {
+      "id": "actions",
+      "from": "client",
+      "to": "server",
+      "label": "2–4. Server Actions",
+      "variant": "emphasis",
+      "labelDy": 24
+    },
+    {
+      "id": "sql",
+      "from": "server",
+      "to": "db",
+      "label": "5. Execute SQL",
+      "variant": "emphasis"
+    },
+    {
+      "id": "jwt",
+      "from": "server",
+      "to": "auth",
+      "label": "ตรวจ JWT",
+      "variant": "security"
+    },
+    {
+      "id": "auth-db",
+      "from": "auth",
+      "to": "db",
+      "label": "อ่าน Users",
+      "labelDy": 24
+    },
+    {
+      "id": "commit",
+      "from": "cursor",
+      "to": "github",
+      "label": "commit / push",
+      "labelDy": 24
+    },
+    {
+      "id": "pipeline",
+      "from": "github",
+      "to": "deploy",
+      "label": "CI/CD trigger",
+      "labelDy": 24
+    },
+    {
+      "id": "ship",
+      "from": "deploy",
+      "to": "middleware",
+      "label": "deploy app",
+      "variant": "dashed"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Vercel",
+      "items": [
+        "Middleware กันทุก request ที่ไม่ใช่ Admin ตั้งแต่ขอบนอก",
+        "Tailwind UI เรียก Server Actions โดยไม่ผ่าน REST API"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Supabase",
+      "items": [
+        "Server Actions ยิง SQL เข้า PostgreSQL โดยตรง",
+        "Auth ทำ passwordless flow และตรวจ JWT ให้ทุก session"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "CI/CD & AI Workflow",
+      "items": [
+        "AI Coding Agent (สลับแบรนด์ได้) → GitHub → Vercel อัตโนมัติ",
+        "ทุก push ได้ Preview, merge เข้า main ขึ้น Production"
+      ]
+    }
+  ]
+}

@@ -48,3 +48,6 @@ release.sh
 !docs/workshop/m9.html
 !docs/workshop/m10.html
 !docs/workshop/bonus.html
+
+# Archify QA byproducts
+diagrams/*.visual-check.*

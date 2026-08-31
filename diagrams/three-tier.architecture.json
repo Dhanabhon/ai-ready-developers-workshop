@@ -1,0 +1,230 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Traditional 3-Tier Architecture",
+    "output": "three-tier.html",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1390,
+      580
+    ]
+  },
+  "components": [
+    {
+      "id": "dev",
+      "type": "external",
+      "label": "Developer",
+      "sublabel": "เครื่อง Local",
+      "pos": [
+        25,
+        60
+      ],
+      "size": [
+        190,
+        76
+      ]
+    },
+    {
+      "id": "transfer",
+      "type": "external",
+      "label": "FTP / SSH",
+      "sublabel": "Upload ไฟล์",
+      "pos": [
+        25,
+        240
+      ],
+      "size": [
+        190,
+        76
+      ]
+    },
+    {
+      "id": "restart",
+      "type": "external",
+      "label": "Manual Restart",
+      "sublabel": "รีสตาร์ต service เอง",
+      "pos": [
+        25,
+        420
+      ],
+      "size": [
+        190,
+        76
+      ]
+    },
+    {
+      "id": "client",
+      "type": "external",
+      "label": "Client / User",
+      "sublabel": "Web Browser",
+      "pos": [
+        340,
+        30
+      ],
+      "size": [
+        215,
+        78
+      ]
+    },
+    {
+      "id": "web",
+      "type": "frontend",
+      "label": "Web Server",
+      "sublabel": "Nginx · Apache",
+      "tag": "static files",
+      "pos": [
+        340,
+        210
+      ],
+      "size": [
+        215,
+        110
+      ]
+    },
+    {
+      "id": "backend",
+      "type": "backend",
+      "label": "Backend Logic",
+      "sublabel": "PHP · Java Spring · Node.js",
+      "pos": [
+        700,
+        210
+      ],
+      "size": [
+        285,
+        110
+      ]
+    },
+    {
+      "id": "db",
+      "type": "database",
+      "label": "Relational Database",
+      "sublabel": "MySQL · SQL Server",
+      "pos": [
+        1110,
+        210
+      ],
+      "size": [
+        235,
+        110
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "WEB / APPLICATION SERVER — Physical Server หรือ VM",
+      "wraps": [
+        "web",
+        "backend"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "DATABASE SERVER — Dedicated VM",
+      "wraps": [
+        "db"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "request",
+      "from": "client",
+      "to": "web",
+      "label": "1. HTTP Request",
+      "variant": "emphasis",
+      "labelDy": 24
+    },
+    {
+      "id": "forward",
+      "from": "web",
+      "to": "backend",
+      "label": "2. ส่งต่อไป Backend",
+      "variant": "emphasis"
+    },
+    {
+      "id": "query",
+      "from": "backend",
+      "to": "db",
+      "label": "3. Execute SQL",
+      "variant": "emphasis"
+    },
+    {
+      "id": "rows",
+      "from": "db",
+      "to": "backend",
+      "label": "4. Return Data Rows",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "bottom",
+      "via": [
+        [
+          1227.5,
+          450
+        ],
+        [
+          842.5,
+          450
+        ]
+      ]
+    },
+    {
+      "id": "response",
+      "from": "backend",
+      "to": "client",
+      "label": "5. JSON / HTML กลับผ่าน Web Server",
+      "variant": "dashed",
+      "fromSide": "top",
+      "toSide": "right"
+    },
+    {
+      "id": "upload",
+      "from": "dev",
+      "to": "transfer",
+      "label": "copy ไฟล์",
+      "labelDy": 24
+    },
+    {
+      "id": "put",
+      "from": "transfer",
+      "to": "restart",
+      "label": "วางบน server",
+      "labelDy": 24
+    },
+    {
+      "id": "deploy",
+      "from": "restart",
+      "to": "web",
+      "label": "deploy ด้วยมือ",
+      "variant": "dashed"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "3-Tier Request Flow",
+      "items": [
+        "Browser → Web Server → Backend → Database แบบ synchronous",
+        "ข้อมูลไหลกลับเป็น JSON/HTML ตามเส้นทางเดิม"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Tier 2 — Application Server",
+      "items": [
+        "Nginx/Apache เสิร์ฟไฟล์ static และส่งต่อ dynamic request",
+        "Backend ตรวจ Session/Cookie + Business Logic + REST API"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "Traditional Deployment",
+      "items": [
+        "Deploy ด้วยมือผ่าน FTP/SSH ไม่มี CI/CD pipeline",
+        "ต้อง restart service เองหลัง upload เสร็จ"
+      ]
+    }
+  ]
+}
