@@ -29,4 +29,10 @@
 
 **[เปิด Build Guide → dhanabhon.github.io/ai-ready-developers-workshop/workshop](https://dhanabhon.github.io/ai-ready-developers-workshop/workshop/)**
 
+## Design Mockups (ทางเลือก)
+
+UI mockups ของระบบ TDC e-Asset (หน้า Dashboard, เวอร์ชันมือถือ, โลโก้ และภาพปกสไลด์) สำหรับผู้เข้าอบรมที่อยากได้ design สำเร็จรูปเป็นแนวทาง จะเปิดดูในเบราว์เซอร์ หรือส่งไฟล์ภาพให้ AI agent ดูเพื่อสร้าง UI ตามก็ได้:
+
+**[เปิด Design Mockups](https://dhanabhon.github.io/ai-ready-developers-workshop/design/asset-management-mockups.dc.html)** · ไฟล์ภาพรายชิ้นอยู่ใน [docs/design/assets/](docs/design/assets/)
+
 > ไฟล์ต้นฉบับอยู่ที่ [docs/prerequisites.html](docs/prerequisites.html) และ [docs/workshop/](docs/workshop/) — แก้ไขแล้ว push ขึ้น `main` ได้เลย GitHub Pages (เสิร์ฟจากโฟลเดอร์ `/docs`) จะ rebuild ให้อัตโนมัติภายในราว 1 นาที
