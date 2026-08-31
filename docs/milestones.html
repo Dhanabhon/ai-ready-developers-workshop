@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TDC e-Asset Milestones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --paper:#F6F7F4; --surface:#FFFFFF; --ink:#1E2620; --muted:#5A675E;
+    --green:#17694A; --green-soft:#E3EFE7;
+    --violet:#7A5CC2; --violet-soft:#EEE9F8;
+    --amber:#8A5E14; --amber-soft:#F4EBD8;
+    --line:#D9E0DA;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"IBM Plex Sans Thai",-apple-system,"Segoe UI",sans-serif;
+    line-height:1.5; padding:2.2rem clamp(1rem,3vw,3rem);
+    display:flex; justify-content:center;
+  }
+  .slide{width:min(1560px,100%)}
+
+  .head{display:flex; align-items:flex-end; justify-content:space-between; gap:1.5rem; margin-bottom:1.6rem; flex-wrap:wrap}
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace; font-size:.78rem; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--green); margin:0 0 .5rem;
+  }
+  h1{
+    font-family:"Bai Jamjuree","IBM Plex Sans Thai",sans-serif; font-weight:700;
+    font-size:clamp(1.6rem,1.1rem + 1.8vw,2.5rem); line-height:1.2; margin:0; text-wrap:balance;
+  }
+  .legend{display:flex; gap:.6rem; flex-wrap:wrap; padding-bottom:.35rem}
+  .key{
+    display:inline-flex; align-items:center; gap:.45rem; font-size:.8rem; font-weight:600;
+    color:var(--muted); border:1px solid var(--line); background:var(--surface);
+    border-radius:999px; padding:.28rem .8rem;
+  }
+  .key .dot{width:.6rem; height:.6rem; border-radius:50%}
+  .dot.g{background:var(--green)} .dot.v{background:var(--violet)} .dot.a{background:var(--amber)}
+
+  .cols{display:grid; grid-template-columns:repeat(3,1fr); gap:1.1rem; align-items:start}
+  @media (max-width:980px){ .cols{grid-template-columns:1fr} }
+
+  .group-head{display:flex; align-items:baseline; gap:.7rem; margin:0 .2rem .75rem}
+  .group-time{
+    font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--paper); background:var(--green);
+    border-radius:999px; padding:.18rem .7rem;
+  }
+  .group-name{font-family:"Bai Jamjuree",sans-serif; font-weight:600; font-size:1.02rem}
+
+  .stack{display:flex; flex-direction:column; gap:.65rem}
+  .ms{
+    background:var(--surface); border:1px solid var(--line); border-radius:12px;
+    padding:.7rem .9rem .75rem; position:relative;
+  }
+  .ms .row{display:flex; align-items:baseline; gap:.65rem; flex-wrap:wrap}
+  .ms .t{margin-left:auto; font-family:"IBM Plex Mono",monospace; font-size:.68rem; color:var(--muted); white-space:nowrap}
+  .group-head .gt{margin-left:auto; font-family:"IBM Plex Mono",monospace; font-size:.68rem; color:var(--muted)}
+  .ms .no{
+    font-family:"IBM Plex Mono",monospace; font-weight:500; font-size:.92rem; color:var(--green);
+  }
+  .ms .name{font-family:"Bai Jamjuree","IBM Plex Sans Thai",sans-serif; font-weight:600; font-size:1.04rem}
+  .ms .proof{margin:.25rem 0 0; font-size:.84rem; color:var(--muted)}
+  .ms .proof b{color:var(--green); font-weight:600}
+  .chip{
+    font-family:"IBM Plex Mono",monospace; font-size:.63rem; letter-spacing:.08em; text-transform:uppercase;
+    border-radius:999px; padding:.12rem .55rem; font-weight:500;
+  }
+  .chip.hand{background:var(--violet-soft); color:var(--violet)}
+  .ms.hand{border-color:var(--violet); border-left-width:4px}
+
+  .bonus{
+    margin-top:.65rem; background:var(--amber-soft); border:1px dashed var(--amber);
+    border-radius:12px; padding:.75rem .95rem;
+  }
+  .bonus .bt{
+    font-family:"IBM Plex Mono",monospace; font-size:.7rem; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--amber); margin:0 0 .35rem; font-weight:500;
+  }
+  .bonus ul{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:.25rem}
+  .bonus li{font-size:.88rem}
+  .bonus li b{font-family:"IBM Plex Mono",monospace; font-weight:500; color:var(--amber); font-size:.82rem}
+  .bonus .note{margin:.45rem 0 0; font-size:.78rem; color:var(--muted)}
+
+  .foot{
+    margin-top:1.4rem; display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap;
+    font-size:.82rem; color:var(--muted); border-top:1px solid var(--line); padding-top:.8rem;
+  }
+  .foot b{color:var(--green); font-weight:600}
+
+  @media (min-width:1200px){
+    body{padding-top:1.5rem; padding-bottom:.9rem}
+    .ms{padding:.8rem 1rem .85rem}
+    .ms .no{font-size:.98rem}
+    .ms .name{font-size:1.12rem}
+    .ms .proof{font-size:.9rem; margin-top:.3rem}
+    .chip{font-size:.66rem}
+    .stack{gap:.72rem}
+    .group-name{font-size:1.08rem}
+    .bonus li{font-size:.93rem}
+    .bonus .note{font-size:.82rem}
+    .key{font-size:.83rem}
+    .foot{font-size:.88rem; margin-top:.9rem; padding-top:.6rem}
+    .head{margin-bottom:1.15rem}
+    h1{font-size:2.1rem}
+  }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="head">
+    <div>
+      <p class="eyebrow">TDC e-Asset · AI-Ready Developers Workshop</p>
+      <h1>เส้นทางสู่ Production — 11 Milestones</h1>
+    </div>
+    <div class="legend">
+      <span class="key"><span class="dot g"></span>โชว์: หลักฐานที่ทุกคนต้องมีเหมือนกัน</span>
+      <span class="key"><span class="dot v"></span>จุด Handoff ข้าม AI Agent (agy → OpenCode → Cursor)</span>
+      <span class="key"><span class="dot a"></span>Bonus สำหรับคนถึงก่อน</span>
+    </div>
+  </div>
+
+  <div class="cols">
+    <section>
+      <div class="group-head"><span class="group-time">ช่วงเช้า</span><span class="group-name">วางราก + Pipeline</span><span class="gt">รวม ~2 ชม. 5 นาที</span></div>
+      <div class="stack">
+        <div class="ms">
+          <div class="row"><span class="no">M0</span><span class="name">เครื่องพร้อม</span><span class="t">~10 นาที</span></div>
+          <p class="proof"><b>โชว์:</b> คำสั่งตรวจรวมจากหน้า Prerequisites เขียวครบ</p>
+        </div>
+        <div class="ms hand">
+          <div class="row"><span class="no">M1</span><span class="name">โปรเจกต์มีชีวิต</span><span class="chip hand">Handoff · เตรียม</span><span class="t">~40 นาที</span></div>
+          <p class="proof"><b>โชว์:</b> localhost:3000 ขึ้น + AGENTS.md และ PLAN.md ใน repo</p>
+        </div>
+        <div class="ms">
+          <div class="row"><span class="no">M2</span><span class="name">ขึ้นเว็บจริง</span><span class="t">~15 นาที</span></div>
+          <p class="proof"><b>โชว์:</b> URL *.vercel.app ของตัวเอง เปิดจากมือถือได้</p>
+        </div>
+        <div class="ms">
+          <div class="row"><span class="no">M3</span><span class="name">Pipeline หมุน</span><span class="t">~15 นาที</span></div>
+          <p class="proof"><b>โชว์:</b> push แล้ว production เปลี่ยนเอง โดยไม่แตะ Vercel</p>
+        </div>
+        <div class="ms">
+          <div class="row"><span class="no">M4</span><span class="name">ฐานข้อมูลต่อติด</span><span class="t">~45 นาที</span></div>
+          <p class="proof"><b>โชว์:</b> เว็บแสดงข้อมูลจาก Supabase ทั้ง local และบน Vercel</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="group-head"><span class="group-time">ช่วงบ่าย</span><span class="group-name">สร้างระบบจริง</span><span class="gt">รวม ~2 ชม. 40 นาที</span></div>
+      <div class="stack">
+        <div class="ms">
+          <div class="row"><span class="no">M5</span><span class="name">ล็อกอินได้</span><span class="t">~30 นาที</span></div>
+          <p class="proof"><b>โชว์:</b> เข้าด้วย magic link สำเร็จ · ไม่ล็อกอินแล้วโดนเด้ง</p>
+        </div>
+        <div class="ms hand">
+          <div class="row"><span class="no">M6</span><span class="name">CRUD ครุภัณฑ์</span><span class="chip hand">Handoff · Cross-review</span><span class="t">~60 นาที</span></div>
+          <p class="proof"><b>โชว์:</b> เพิ่ม/แก้/ลบ + ข้อมูล 10 รายการ บน Preview URL — จบแล้วให้ OpenCode review</p>
+        </div>
+        <div class="ms">
+          <div class="row"><span class="no">M7</span><span class="name">ยืม–คืนได้</span><span class="t">~40 นาที</span></div>
+          <p class="proof"><b>โชว์:</b> demo สด กดยืม → สถานะเปลี่ยน → กดคืน → กลับมา available</p>
+        </div>
+        <div class="ms hand">
+          <div class="row"><span class="no">M8</span><span class="name">Dashboard</span><span class="chip hand">Handoff · เต็มรูปแบบ</span><span class="t">~30 นาที</span></div>
+          <p class="proof"><b>โชว์:</b> สร้างด้วย Cursor ทั้งฟีเจอร์ (รับช่วงจาก agy) + ตอบได้ว่ารู้ context จากไหน</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="group-head"><span class="group-time">ชั่วโมงสุดท้าย</span><span class="group-name">ส่งมอบ</span><span class="gt">รวม ~50 นาที</span></div>
+      <div class="stack">
+        <div class="ms">
+          <div class="row"><span class="no">M9</span><span class="name">ผ่านด่านคุณภาพ</span><span class="t">~30 นาที</span></div>
+          <p class="proof"><b>โชว์:</b> lint + tsc เขียว และ smoke test ผ่าน 1 เส้นทาง</p>
+        </div>
+        <div class="ms">
+          <div class="row"><span class="no">M10</span><span class="name">Production v0.1.0</span><span class="t">~20 นาที</span></div>
+          <p class="proof"><b>โชว์:</b> เพื่อนใช้ระบบจากมือถือของเพื่อนเองได้ + มี tag v0.1.0</p>
+        </div>
+      </div>
+      <div class="bonus">
+        <p class="bt">Bonus Track</p>
+        <ul>
+          <li><b>B1</b> อัปโหลดรูปครุภัณฑ์ (Supabase Storage)</li>
+          <li><b>B2</b> ค้นหา / Filter เก็บ state ใน URL</li>
+          <li><b>B3</b> มีแผนเสียเงิน? ลอง Claude Code / Codex เทียบผล + cost</li>
+        </ul>
+        <p class="note">ถึง milestone ก่อนเพื่อน → หยิบ Bonus ทำต่อ ไม่ต้องรอห้อง</p>
+      </div>
+    </section>
+  </div>
+
+  <div class="foot">
+    <span>กติกาห้อง: ไปต่อเมื่อ <b>~80%</b> ถึง milestone · ที่เหลือ TA และเพื่อนช่วยเก็บตก</span>
+    <span>Handoff ได้เพราะบริบทอยู่ใน <b>repo</b> (AGENTS.md + git history) ไม่ใช่ในแชต</span>
+  </div>
+</div>
+</body>
+</html>
