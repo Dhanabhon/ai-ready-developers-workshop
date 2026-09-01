@@ -29,7 +29,7 @@
 
 **[เปิด Build Guide → dhanabhon.github.io/ai-ready-developers-workshop/workshop](https://dhanabhon.github.io/ai-ready-developers-workshop/workshop/)**
 
-## Demo Project (ระบบตัวอย่างที่สร้างเสร็จแล้ว)
+## Demo Project
 
 ระบบ TDC e-Asset ฉบับสมบูรณ์ที่สร้างด้วยแนวทางเดียวกับ workshop นี้ ใช้ดูเป็นตัวอย่างว่าปลายทางหน้าตาเป็นอย่างไร หรือเปิดโค้ดเทียบตอนติดขัดระหว่างทำ:
 
