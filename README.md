@@ -29,6 +29,21 @@
 
 **[เปิด Build Guide → dhanabhon.github.io/ai-ready-developers-workshop/workshop](https://dhanabhon.github.io/ai-ready-developers-workshop/workshop/)**
 
+## Demo Project (ระบบตัวอย่างที่สร้างเสร็จแล้ว)
+
+ระบบ TDC e-Asset ฉบับสมบูรณ์ที่สร้างด้วยแนวทางเดียวกับ workshop นี้ ใช้ดูเป็นตัวอย่างว่าปลายทางหน้าตาเป็นอย่างไร หรือเปิดโค้ดเทียบตอนติดขัดระหว่างทำ:
+
+- **ลองใช้งานจริง:** [tdc-e-asset-rho.vercel.app](https://tdc-e-asset-rho.vercel.app)
+- **ซอร์สโค้ด:** [github.com/Dhanabhon/tdc-e-asset](https://github.com/Dhanabhon/tdc-e-asset)
+
+จุดที่ควรเปิดดูเป็นพิเศษ เพราะเป็นบทเรียนหลักของ workshop:
+
+- `AGENTS.md` และ `CLAUDE.md` คือสัญญากลางที่ทำให้ AI agent ต่างค่ายรับงานต่อกันได้ (บริบทอยู่ในรีโป ไม่ใช่ในแชต)
+- `supabase/migrations/` เก็บ SQL ทุกไฟล์ไว้ในรีโป รวมถึง Stored Procedure ที่ใช้ `FOR UPDATE` row lock กันปัญหาแย่งยืมพร้อมกัน
+- `docs/architecture_spec.md` คือแผนที่วางไว้ตั้งแต่ก่อนเขียนโค้ด เทียบได้กับ `docs/PLAN.md` ที่เราสร้างใน M1
+
+> ระบบตัวอย่างมีฟีเจอร์มากกว่าที่ทำทันในหนึ่งวัน (เช่น รายงานมูลค่าทางบัญชี การแจ้งเตือนเกินกำหนดคืน) เป้าหมายของวัน workshop คือ MVP ตาม 11 milestones ส่วนที่เหลือคือแนวทางต่อยอด
+
 ## Design Mockups (ทางเลือก)
 
 UI mockups ของระบบ TDC e-Asset (หน้า Dashboard, เวอร์ชันมือถือ, โลโก้ และภาพปกสไลด์) สำหรับผู้เข้าอบรมที่อยากได้ design สำเร็จรูปเป็นแนวทาง จะเปิดดูในเบราว์เซอร์ หรือส่งไฟล์ภาพให้ AI agent ดูเพื่อสร้าง UI ตามก็ได้:
